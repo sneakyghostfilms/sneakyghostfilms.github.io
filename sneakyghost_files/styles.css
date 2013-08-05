@@ -1,0 +1,338 @@
+/* reset */
+* {
+margin: 0;
+padding: 0;
+}
+
+/* render html5 elements as block */
+header, section, article {
+display: block;
+}
+
+body {
+line-height: 1;
+background: #f1f1f1 url("images/8196-v1.jpg") repeat;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+color: #666;
+font-size: 14px;
+line-height: 18px;
+}
+	
+/* layout */
+
+#wrapper {
+width: 940px;
+margin: 0 auto;
+margin-top: 5px;
+margin-bottom: 5px;
+-webkit-box-shadow: 3px 3px 7px #777;
+-moz-box-shadow: 3px 3px 7px #777;
+}
+
+header {
+width: 940px;
+height: 200px;
+margin: 0 auto;
+background: #fff url(images/headerimg_dark_with_title.gif) no-repeat left top;
+}
+
+#main {
+width: 940px;
+margin: 0 auto;
+background: #cccccc;
+overflow: hidden;
+}
+
+#content {
+float: right;
+width: 940px;
+}
+
+/* basics */
+
+h1,h2,h3,h4,h5,h6 {
+font-weight: bold;
+clear: both;
+color: #333;
+}
+
+a:link, a:visited {
+color:#000;
+}
+
+a:hover, a:active {
+color: #333;
+}
+
+p {
+margin-bottom: 18px;
+}
+
+li {
+padding-left: 5px;
+}
+
+.goals li {
+list-style-type: square;
+}
+
+/** HEADER */
+
+header h1, header h2 {
+margin: 0;
+padding: 0 0 0 30px;
+line-height: normal;
+}
+
+header h1 { 	
+font-size: 40px;
+float: left;
+padding-top: 20px; 
+}
+
+header h1 a:link, header h1 a:visited {
+text-decoration: none;
+color: #FFF;
+}
+
+header h1 a:hover { 
+text-decoration: underline; 
+}
+
+header h2 {
+padding: 20px 0 0 30px;
+font-style: italic;
+font-size: 14px;
+color: #AAAAAA;
+}
+
+/** ARTICLES **/
+
+article {
+padding: 0 30px 0 30px;
+}
+
+article img {
+border: none;
+-webkit-box-shadow: 3px 3px 7px #777;
+-moz-box-shadow: 3px 3px 7px #777;
+}
+
+article h2 {
+margin-top: 20px;
+}
+
+#content p, ul, ol, hr {
+margin-bottom: 24px;
+}
+
+#content ul ul, ol ol, ul ol, ol ul {
+margin-bottom: 0;
+}
+
+#content h1, h2, h3, h4, h5, h6 {
+color: #333;
+margin: 0 0 20px 0;
+line-height: 1.5em;
+}
+
+.alignleft, img.alignleft {
+display: inline;
+float: left;
+margin-right: 24px;
+margin-top: 4px;
+}
+
+.alignright, img.alignright {
+display: inline;
+float: right;
+margin-left: 24px;
+margin-top: 4px;
+}
+
+.aligncenter, img.aligncenter {
+clear: both;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+img.alignleft, img.alignright, img.aligncenter {
+margin-bottom: 12px;
+}
+
+.cast div {
+text-align: center;
+float: left;
+cursor:pointer
+}
+
+.cast div:not(:first-child) {
+text-align: center;
+float: left;
+padding-left:20px
+}
+
+.cast .caption {
+font-weight: bolder;
+font-size: smaller
+}
+
+/** ACCORDION */
+.accordbk {
+background: #ccc url(images/accordinfo.gif) bottom right no-repeat;
+}
+
+.horizontalaccordion>ul {
+margin: 0;
+padding: 0;
+list-style:none;
+height: 300px;
+}
+
+.horizontalaccordion>ul>li {
+display:block;
+overflow: hidden;
+float:left;
+margin: 0;
+padding: 0;
+list-style:none;
+width:40px;
+height: 300px;
+background:#cccccc;
+transition: width 0.3s ease-in-out;
+-moz-transition: width 0.3s ease-in-out;
+-webkit-transition: width 0.3s ease-in-out;
+-o-transition: width 0.3s ease-in-out;
+}
+
+.horizontalaccordion>ul>li>h3 {
+display:block;
+float:left;
+margin: 0;
+padding:10px;
+height:19px;
+width:280px;
+border-left:#f0f0f0 1px solid;
+font-family: Arial, Helvetica, sans-serif;
+text-decoration:none;
+text-transform:uppercase;
+color: #000;
+background:#cccccc;
+white-space:nowrap;
+-moz-transform: rotate(90.0deg) translate(-40px,0px);
+-moz-transform-origin: 0 100%;
+-o-transform: rotate(90.0deg) translate(-40px,0px);
+-o-transform-origin: 0 100%;
+-webkit-transform: rotate(90.0deg) translate(-40px,0px);
+-webkit-transform-origin: 0 100%;
+transform: rotate(90.0deg) translate(-40px,0px);
+transform-origin: 0 100%;
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)
+progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc);
+-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"
+"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)";
+background: -moz-linear-gradient( top, #999999, #cccccc);
+background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#cccccc));
+}
+
+.horizontalaccordion>ul>li>div {
+display:none;
+float:left;
+overflow: auto;
+position:relative;
+top:-30px;
+left:50px;
+*top:0px;
+*left:0px;
+margin:0;
+width:640px;
+height:300px;
+}
+
+.horizontalaccordion>ul>li>div img {
+float: left;
+margin-right: 8px;
+}
+
+.horizontalaccordion>ul>li:hover {
+overflow: hidden;
+width: 720px;
+}
+
+.horizontalaccordion:hover>ul>li:hover>div {
+display:block;
+}
+
+.horizontalaccordion:hover>ul>li:hover>h3 {
+color:#fff;
+background:#000000;
+background: -moz-linear-gradient( top, #454545, #000000);
+background: -webkit-gradient(linear, left top, left bottom, from(#454545), to(#000000));
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)
+progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff454545, endColorstr=#ff000000);
+-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"
+"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff454545, endColorstr=#ff000000)";
+}
+
+.horizontalaccordion>ul>li>h3:hover {
+cursor:pointer;
+}
+.horizontalaccordion h4 {
+font-size: 16px;
+}
+
+#gallery {
+padding: 2em 0;
+margin: 0 auto;
+width: 940px;
+font-weight: bolder;
+font-size: smaller
+}
+#gallery h2 {
+margin: 0;
+border-bottom: 0px solid #666;
+}
+#gallery #main {
+width: 100%;
+margin: 0;
+padding: 1em 0;
+list-style: none;
+}
+#gallery #main li p {
+margin: 0;
+}
+
+#gallery h2 {
+width: 100%;
+height: 40px;
+background: transparent url("../img/title.png") no-repeat 0 0;
+text-indent: -1000em;
+}
+
+#gallery #main {
+padding-left: 45px;
+}
+#gallery #main li {
+float: left;
+width: 400px;
+margin: 0 40px 0 0;
+}
+#gallery #main li img {
+display: block;
+width: 100%;
+}
+
+#gallery #main li {
+background: #D5D5D5 no-repeat top left;
+color: #333;
+margin-bottom: 0.5em;
+-webkit-box-shadow: 3px 3px 7px #777;
+-moz-box-shadow: 3px 3px 7px #777;
+}
+#gallery #main li p {
+padding: 0.5em 1em;
+}
+#gallery #main li p.desc {
+background: transparent url("../img/br.png") no-repeat bottom right;
+}
