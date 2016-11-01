@@ -34,11 +34,20 @@
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </header><!-- end of header -->
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=487122761316038";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="wrapper"><!-- #wrapper -->
 
 
   <section id="main"><!-- #main content area -->
     <div style="float:right;text-align:center;padding-right:10px">
+      <div class="fb-like" data-href="https://www.facebook.com/sneakyghost/" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
       <a href="mailto:contact@sneakyghost.com">
         <img src="./sneakyghost_files/images/mail.png"><br>
         Contact
