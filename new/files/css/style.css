@@ -2588,38 +2588,31 @@ a.sr-button2:hover { border-color: #ffffff; color: #0d0d0d; }
         background: #FFFFFF;
 }
 
-div.cast-ribbon {
+div.cast {
     position: absolute;
     left: 0;
     right: 0;
     min-width: 900px;
+    text-align: center;
     background: #000000;
 }
 
-div.cast {
-    position: relative;
+div.cast-one-row {
+    height: 370px;
+}
+
+div.cast-two-row {
     height: 790px;
 }
 
-div.castrow {
-    float:right;
-    left:-50%;
-    text-align:left;
-    position:relative;
+div.cast ul {
+    margin: 0 auto;
 }
 
-div.castrow ul {
-    left:50%;
-    position:relative;
+div.cast ul li {
+    display: inline-block;
+    margin: 10px;
     list-style: none;
-}
-
-div.castrow ul li {
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .cast-desc {
