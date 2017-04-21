@@ -2588,8 +2588,14 @@ a.sr-button2:hover { border-color: #ffffff; color: #0d0d0d; }
         background: #FFFFFF;
 }
 
-div.cast {
+div.film-media {
     position: absolute;
+    left: 0;
+    right: 0;
+}
+
+div.cast {
+    position: relative;
     left: 0;
     right: 0;
     min-width: 900px;
@@ -2602,7 +2608,7 @@ div.cast-one-row {
 }
 
 div.cast-two-row {
-    height: 790px;
+    height: 750px;
 }
 
 div.cast ul {
@@ -2623,4 +2629,13 @@ div.cast ul li {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: #cccccc
+}
+
+div.film {
+    position: relative;
+    left: 0;
+    right: 0;
+    min-width: 900px;
+    text-align: center;
+    background: #FFFFFF;
 }
