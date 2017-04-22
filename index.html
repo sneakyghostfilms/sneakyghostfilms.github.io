@@ -51,6 +51,7 @@
         <script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script><style type="text/css"></style>
         <link href="http://cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
         <script src="files/js/jquery-1.9.1.min.js"></script> <!-- JQuery library -->
+        <script src="files/js/formspree.js"></script> <!-- Formspree email submission script -->
 
     </head>
 
@@ -444,11 +445,33 @@
                                         <div class="separator"><span></span></div>
                                         <h6 class="alttitle title-minimal">Get in touch with<br>Sneaky Ghost Films</h6>
                                     </div>
-
-                                    <div class="spacer spacer-medium"></div>
-                                    <div class="email align-center">
-                                        <h6><a href="mailto:sneakyghostfilms@gmail.com">Email</a></h6>
-                                    </div>
+                                    <form id="contact-form" action="//formspree.io/sneakyghostfilms@gmail.com" method="post">
+                                        <div class="form-row clearfix">
+                                            <label for="name" class="req">Name *</label>
+                                            <input type="text" name="name" class="name" id="name" value="" placeholder="Name" />
+                                        </div>
+                                        <div class="form-row clearfix">
+                                            <label for="email" class="req">Email *</label>
+                                            <input type="text" name="email" class="email" id="email" value="" placeholder="Email"/>
+                                        </div>
+                                        <div class="form-row clearfix textbox">
+                                            <label for="message" class="req">Message *</label>
+                                            <textarea name="message" class="message" id="message" rows="15" cols="50" placeholder="Message"></textarea>
+                                        </div>
+                                        <div id="form-note">
+                                            <div class="alert alert-error">
+                                                <strong>Error</strong>: Please check your entries!
+                                            </div>
+                                        </div>
+                                        <!-- CONFIG -->
+                                        <input class="is-hidden" type="text" name="_gotcha">
+                                        <input type="hidden" name="_subject" value="Contact Sneaky Ghost Films html">
+                                        <input type="hidden" name="_cc" value="email@cc.com">
+                                        <!-- /CONFIG -->
+                                        <div class="form-row form-submit">
+                                            <input type="submit" name="submit_form" class="submit" value="Send" />
+                                        </div>
+                                    </form>
                                 </div> <!-- END .split-wrapped-content -->	
                             </div> <!-- END .split-left -->
 
