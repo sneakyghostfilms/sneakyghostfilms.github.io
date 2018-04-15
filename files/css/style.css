@@ -2632,10 +2632,16 @@ div.cast ul li {
 }
 
 div.film {
-    position: relative;
+    position:relative;
+    display:block;
+    height:600px;
     left: 0;
     right: 0;
     min-width: 900px;
     text-align: center;
     background: #FFFFFF;
+}
+
+div.services ul {
+    list-style-type:none;
 }
