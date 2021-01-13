@@ -6,7 +6,7 @@ $contactForm.submit(function(e) {
 	var defaultSubmitText = $submit.val();
 
 	$.ajax({
-		url: '//formspree.io/sneakyghostfilms@gmail.com',
+		url: '//formspree.io/f/maylavkd',
 		method: 'POST',
 		data: $(this).serialize(),
 		dataType: 'json',
