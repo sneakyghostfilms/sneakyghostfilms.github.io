@@ -441,31 +441,30 @@
                                         <div class="separator"><span></span></div>
                                         <h6 class="alttitle title-minimal">Get in touch with<br>Sneaky Ghost Films</h6>
                                     </div>
-                                    <form id="contact-form" action="https://formspree.io/f/maylavkd" method="post">
-                                        <div class="form-row clearfix">
-                                            <label for="name" class="req">Name *</label>
-                                            <input type="text" name="name" class="name" id="name" value="" placeholder="Your name" required />
-                                        </div>
-                                        <div class="form-row clearfix">
-                                            <label for="email" class="req">Email *</label>
-                                            <input type="text" name="email" class="email" id="email" value="" placeholder="Your@email.address" required />
-                                        </div>
-                                        <div class="form-row clearfix textbox">
-                                            <label for="message" class="req">Message *</label>
-                                            <textarea name="message" class="message" id="message" rows="15" cols="50" placeholder="What's up?" required></textarea>
-                                        </div>
-                                        <div id="form-note">
-                                            <div class="alert alert-error">
-                                                <strong>Error</strong>: Please check your entries!
+                                    <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/maylavkd" method="post">
+                                        <fieldset id="fs-frm-inputs">
+                                            <div class="form-row clearfix">
+                                                <label for="full-name">Name *</label>
+                                                <input type="text" name="name" id="full-name" placeholder="Your name" required="">
                                             </div>
-                                        </div>
-                                        <!-- CONFIG -->
-                                        <input class="is-hidden" type="text" name="_gotcha">
-                                        <input type="hidden" name="_subject" value="Contact Sneaky Ghost Films html">
-                                        <input type="hidden" name="_cc" value="email@cc.com">
-                                        <!-- /CONFIG -->
+                                            <div class="form-row clearfix">
+                                                <label for="email-address">Email *</label>
+                                                <input type="email" name="_replyto" id="email-address" placeholder="Your@email.address" required="">
+                                            </div>
+                                            <div class="form-row clearfix textbox">    
+                                                <label for="message">Message *</label>
+                                                <textarea rows="5" name="message" id="message" placeholder="What's up?" required=""></textarea>
+                                            </div>
+                                            <div id="form-note">
+                                                <div class="alert alert-error">
+                                                    <strong>Error</strong>: Please check your entries!
+                                                </div>
+                                            </div>
+                                            <input class="is-hidden" type="text" name="_gotcha">
+                                            <input type="hidden" name="_subject" id="email-subject" value="Contact Sneaky Ghost Films">
+                                        </fieldset>
                                         <div class="form-row form-submit">
-                                            <input type="submit" name="submit_form" class="submit" value="Send" />
+                                            <input type="submit" class="submit" value="Send">
                                         </div>
                                     </form>
                                 </div> <!-- END .split-wrapped-content -->	
