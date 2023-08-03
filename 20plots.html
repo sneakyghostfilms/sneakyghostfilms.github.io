@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20plots: An AI-Assist Brainstorming Tool for Creatives</title>
+    <link rel="stylesheet" type="text/css" href="20plots.css">
+    <script>
+        window.onload = function() {
+            function updateCaptions() {
+                let sections = document.querySelectorAll('section');
+                let windowHeight = window.innerHeight;
+                let fadeEdge = windowHeight * 0.1; 
+
+                sections.forEach(section => {
+                    let caption = section.querySelector('p.fade');
+                    if (caption) {
+                        let captionCenter = caption.getBoundingClientRect().top + caption.getBoundingClientRect().height / 2;
+                        let distanceFromTop = captionCenter - fadeEdge;
+                        let distanceFromBottom = windowHeight - captionCenter - fadeEdge;
+                        let opacityTop = Math.min(Math.max(distanceFromTop / fadeEdge, 0), 1);
+                        let opacityBottom = Math.min(Math.max(distanceFromBottom / fadeEdge, 0), 1);
+                        let opacity = Math.min(opacityTop, opacityBottom);
+                        caption.style.opacity = opacity;
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateCaptions);
+            window.addEventListener('resize', updateCaptions);  // Added this line
+
+            updateCaptions();
+        };
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Unleash Your Creativity with <a class="metallic-text" href="https://www.20plots.com" target="_blank">20plots</a></h1>
+        <p>A brainstorming tool that suggests story plots with personal connections &#8212; AI-assist, not AI-replace!</p>
+    </header>
+    <section>
+        <img src="20plots-images/plots.png" alt="Screenshot of story plots">
+        <p class="fade-in-out fade">Develop a collection of story plots that combine your personal elements. You can create new versions of existing plots or manually create your own. You'll have to curate because you can only keep your top 20!.</p>
+    </section>
+
+    <section>
+        <img src="20plots-images/dreams.png" alt="Screenshot of dream elements">
+        <p class="fade-in-out fade">Build lists up to 20 each of interesting people, personal anecdotes, story concepts you want to try, locations you've been to, and dreams that linger. 20plots will use this creative pool to generate story plots unique to you.</p>
+    </section>
+
+    <section>
+        <img src="20plots-images/drawer.png" alt="Screenshot of plot elements">
+        <p class="fade-in-out fade">View the elements used to generate a plot. Tweak the list to generate new plots. Your imagination is the limit!</p>
+    </section>
+
+    <section>
+        <img class="short" src="20plots-images/genres.png" alt="Screenshot of genre selections">
+        <p class="fade-in-out fade">Choose from a wide variety of 44 genres for your story plots. From fantasy to thriller, select a genre you're in the mood for.</p>
+    </section>
+
+    <section>
+        <img src="20plots-images/formats.png" alt="Screenshot of format selections">
+        <p class="fade-in-out fade">Preview your story in 15 different formats. Whether you're writing a screenplay, prose, or a monologue, get a glimpse of how your story comes alive.</p>
+    </section>
+
+    <section>
+        <img src="20plots-images/sample.png" alt="Screenshot of sample script">
+        <p class="fade-in-out fade">Get a sneak peek of how your story might play out with generated sample scripts. Perfect for sparking ideas and letting the creativity flow.</p>
+    </section>
+
+    <footer>
+        <h3>Join the Beta Testing</h3>
+        <div class="form-container">
+            Interested in 20plots? Join our waitlist:
+            <form action="https://formspree.io/f/maylavkd" method="POST">
+                <input type="hidden" name="website_info" value="20plots">
+                <input type="email" name="_replyto" placeholder="Your email" required>
+                <input type="hidden" name="_subject" value="New beta testing request">
+                <input type="submit" value="Join Waitlist">
+            </form>
+        </div>
+<div class="copyright">&copy; 2023 <a href="http://www.sneakyghost.com" target="_blank">Sneaky Ghost</a> Innovations. All rights reserved.</div>
+    </footer>
+</body>
+
+</html>
