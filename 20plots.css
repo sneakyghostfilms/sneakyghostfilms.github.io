@@ -54,6 +54,10 @@ p {
     opacity: 0;
     transition: opacity 0.5s;
 }
+p.fade {
+    max-width: 500px;
+    margin: auto;
+}
 a {
     color: #ff7f50;
     text-decoration: underline;
