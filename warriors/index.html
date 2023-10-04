@@ -26,6 +26,7 @@
         .event-details {
             font-size: 16px;
             margin-bottom: 30px;
+            text-align: left;
         }
         .event-details p {
             margin-bottom: 5px;
@@ -71,22 +72,44 @@
             border-radius: 5px;
             text-decoration: none;
         }
+        .info-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button-and-details {
+            text-align: center;
+        }
+        .right-section {
+            margin-left: 20px;
+        }
+        .supporter-logo {
+            max-width: 150px;
+            height: auto;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
 
 <header>6 Locally Made Military-Themed Short Films</header>
 <p class="charity-highlight">All proceeds will be donated to the Wounded Warriors Project</p>
-<div style="margin-top: 30px; margin-bottom: 30px;">
-    <a href="https://communityfundraising.woundedwarriorproject.org/campaign/films" class="donate-button">CLICK TO DONATE</a>
+<div class="info-container">
+    <div class="button-and-details">
+        <div style="margin-top: 30px; margin-bottom: 30px;">
+            <a href="https://communityfundraising.woundedwarriorproject.org/campaign/films" class="donate-button">CLICK TO DONATE</a>
+        </div>
+        <div class="event-details">
+            <p>Venue: The Strand Theater in Zelienople, PA</p>
+            <p>Date: Sunday of Veterans Day weekend, November 12th</p>
+            <p>Time: 6pm to 8pm</p>
+            <p>Admission: Suggested donation-only</p>
+        </div>
+    </div>
+    <div class="right-section">
+        <img src="Proud_Supporter_Logo.jpg" alt="Wounded Warriors Project Proud Supporter" class="supporter-logo">
+    </div>
 </div>
-<div class="event-details">
-    <p>Venue: The Strand Theater in Zelienople, PA</p>
-    <p>Date: Sunday of Veterans Day weekend, November 12th</p>
-    <p>Time: 6pm to 8pm</p>
-    <p>Admission: Suggested donation-only</p>
-</div>
-
 <div class="film-container">
     <div class="film">
         <img src="truce.jpg" alt="Truce Poster">
