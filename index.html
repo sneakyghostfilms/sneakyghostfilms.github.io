@@ -56,13 +56,13 @@
     </head>
 
     <body>
-        <div id="scam-warning-modal" class="modal">
+        <!-- <div id="scam-warning-modal" class="modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
                 <h2>Important Warning</h2>
                 <p>Some individuals and organizations are falsely stating an affiliation with me (Scott Danzig) and Sneaky Ghost Films. Please exercise caution and contact me directly regarding any project or deal involving my name or my company. Thank you, and stay safe!</p>
             </div>
-        </div>
+        </div> -->
         <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=487122761316038&autoLogAppEvents=1"></script>	
         <div class="guidance">
@@ -210,6 +210,20 @@
                         <div class="spacer spacer-small"></div>
 
                         <div id="portfolio-grid" class="masonry portfolio-entries masonry-spaced clearfix" data-maxitemwidth="400">
+
+                            <div class="portfolio-masonry-entry masonry-item droll">
+                                <div class="entry-thumb portfolio-thumb">
+                                    <div class="imgoverlay overlay-dark overlay-transparent name-hidden">
+                                        <img src="files/uploads/films/senior_software_engineer_800x600.jpg" alt="Senior Software Engineer">
+                                        <div class="overlaycaption">
+                                            <h5 class="overlay-name title-minimal"><strong>Senior Software Engineer</strong></h5>
+                                            <div class="separator-small"><span></span></div>
+                                            <h6 class="alttitle">Dark Comedy</h6>
+                                        </div>
+                                        <a href="project-senior_software_engineer.html" class="transition"></a>
+                                    </div>
+                                </div>
+                            </div> <!-- END .portfolio-masonry-entry -->
 
                             <div class="portfolio-masonry-entry masonry-item dark">
                                 <div class="entry-thumb portfolio-thumb">
@@ -563,9 +577,9 @@ mapinitialize();
             var modal = document.getElementById("scam-warning-modal");
             var span = document.getElementsByClassName("close-btn")[0];
 
-            if (!localStorage.getItem("notFirstVisit")) {
+            //if (!localStorage.getItem("notFirstVisit")) {
                 modal.style.display = "block";
-            }
+            //}
 
             span.onclick = function() {
                 modal.style.display = "none";
