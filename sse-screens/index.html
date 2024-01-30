@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Search - Search Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div id="headerContent">
+            <img src="simple_search_logo_cropped.jpeg" alt="Logo" id="logo" />
+            <div id="icons">
+                <div class="icon">&#x1F514;</div> <!-- Bell icon for notifications -->
+                <div class="icon">&#9881;</div> <!-- Gear icon for settings -->
+                <div id="profileIcon">M</div>
+            </div>
+        </div>
+    </header>
+    <div id="initialSearch">
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <main id="searchEngine">
+        <section id="searchQuery">
+            <p>Showing results for: <em>error tensor dimension mismatch</em></p>
+        </section>
+
+        <section id="searchResults">
+            <ul>
+                <li>
+                    <a href="#">Understanding Tensor Dimension Mismatches - stackanswers.com</a>
+                    <p>Explore common mistakes and solutions in tensor dimensionality in machine learning models. Learn from experts in the field...</p>
+                </li>
+                <li>
+                    <a href="#">Fixing Common Tensor Errors in Python - pycodeforum.com</a>
+                    <p>Join our community discussion on resolving tensor dimension errors in Python. Discover tips and tricks from experienced developers...</p>
+                </li>
+                <li>
+                    <a href="#">Machine Learning Model Debugging Tips - aiinsightsblog.com</a>
+                    <p>Debugging machine learning models can be challenging. This article provides insight into effective strategies for troubleshooting...</p>
+                </li>
+                <li>
+                    <a href="#">How Massages Can Relieve Tensors in Your Back - healthandwellness.com</a>
+                    <p>Discover how the right massage techniques can relieve tension in your back muscles, commonly referred to as tensors...</p>
+                </li>
+                <li>
+                    <a href="#">Advanced Tensor Management in Data Science - datasciencehub.net</a>
+                    <p>Managing tensor operations efficiently is crucial in large-scale data science projects. Learn the best practices from this comprehensive guide...</p>
+                </li>
+                <li>
+                    <a href="#">TensorFlow vs. PyTorch: A Dimensional Analysis - techcomparison.com</a>
+                    <p>Comparing TensorFlow and PyTorch in terms of tensor operations and performance. Understand the pros and cons of each framework...</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p id="simplesearchCopyright">&copy; 2024 SimpleSearch</p>
+        <p><a href="#">About Us</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+    <section id="yarnDisplay" style="display:none;">
+        <nav id="storeNav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="craftDepotHeader">
+            <div id="craftDepotTitle">
+                <img src="scott_pic.jpeg" alt="Scott" id="scottImage" />
+                <span class="title-word"><span>S</span><span>c</span><span>o</span><span>t</span><span>t</span><span>'</span><span>s</span></span>
+                <span class="title-word"><span>C</span><span>r</span><span>a</span><span>f</span><span>t</span></span>
+                <span class="title-word"><span>D</span><span>e</span><span>p</span><span>o</span><span>t</span></span>
+            </div>
+        </div>
+        <h2>Yarn Sale - 100% Cotton!</h2>
+        <div class="yarnGrid">
+                <div class="yarn">
+                    <img src="pink_yarn.jpeg" alt="Pink Yarn">
+                    <p>Pink Yarn - $8.99</p>
+                </div>
+                <div class="yarn">
+                    <img src="purple_yarn.jpeg" alt="Purple Yarn">
+                    <p>Purple Yarn - $9.99</p>
+                </div>
+                <div class="yarn">
+                    <img src="beige_yarn.jpeg" alt="Beige Yarn">
+                    <p>Beige Yarn - $7.49</p>
+                </div>
+                <div class="yarn">
+                    <img src="white_yarn.jpeg" alt="White Yarn">
+                    <p>White Yarn - $5.99</p>
+                </div>
+                <div class="yarn">
+                    <img src="gray_yarn.jpeg" alt="Gray Yarn">
+                    <p>Gray Yarn - $8.49</p>
+                </div>
+                <div class="yarn">
+                    <img src="orange_yarn.jpeg" alt="Orange Yarn">
+                    <p>Orange Yarn - $7.99</p>
+                </div>
+        </div>
+        <div id="aboutUsSection">
+            <h2>About Us</h2>
+            <div id="aboutUsContent">
+                <div id="aboutUsText">
+                    <p>Scott's Craft Depot has been the heart and soul of the local crafting community for over 25 years. Our mission is to inspire creativity, provide high-quality supplies, and support crafters of all skill levels. We pride ourselves on our commitment to sustainable practices and our dedication to the local community.</p>
+                    <p>Whether you're picking up a new hobby or are a seasoned pro, we've got the supplies and know-how to help you bring your vision to life. Visit us online or at our brick-and-mortar store to experience the Scott's Craft Depot difference!</p>
+                </div>
+                <div id="aboutUsImageContainer">
+                    <img src="store_interior.png" alt="Inside Scott's Craft Depot" id="aboutUsImage">
+                </div>
+            </div>
+        </div>
+        <footer id="storeFooter">
+            <p>&copy; 2024 Scott's Craft Depot. All rights reserved.</p>
+        </footer>
+    </section>
+    <div id="virusScanner" style="display:none;">
+        <img src="snail_pic.jpeg" alt="Snail" id="snailImage" /> <!-- Add this line for the snail image -->
+        <h2>SnailGuard Defender</h2>
+        <p id="scannerStatus">This website has installed malware!</p>
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+        <button id="startScan">Start Scan</button>
+        <button id="ignoreViruses" style="display:none;">Ignore</button>
+        <button id="fixViruses" style="display:none;">Fix</button>
+    </div>
+    <script src="script.js"></script>
+    <aside id="yarnAd" style="display:none;">
+        <a href="#" id="yarnAdLink">
+            <img src="yarn_sale_ad.png" width="450" height="300" alt="Colorful Yarn Sale Banner">
+            <p><strong>SCOTT'S CRAFT DEPOT - New Yarn Colors Available!</strong></p>
+        </a>
+        <!-- Close button -->
+        <span id="closeAd" style="cursor: pointer; position: absolute; top: 10px; right: 10px;">&times;</span>
+    </aside>
+</body>
+</html>

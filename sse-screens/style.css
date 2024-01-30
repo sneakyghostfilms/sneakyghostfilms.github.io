@@ -1,0 +1,548 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #ADD8E6, #FFB6C1); /* Gradient from light blue to soft pink */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    min-height: 100vh;
+}
+
+header {
+    background-color: #0056b3;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem; /* Increased font size */
+}
+
+#initialSearch {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchForm {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    background-color: white; /* White background for the form */
+    padding: 20px;
+    width: 600px;
+    border-radius: 20px; /* Rounded corners for the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+#searchInput {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #007bff; /* Updated to blue */
+    border-radius: 10px; /* Rounded corners for the input */
+    margin-right: 10px; /* Space between input and button */
+    flex-grow: 1; /* Allows the input to grow and fill the space */
+}
+
+#searchForm button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Updated to blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners for the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for the button */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+#searchForm button:hover {
+    background-color: #0056b3; /* Updated to a darker shade of blue for hover */
+}
+
+#searchEngine {
+    display: none;
+    flex-grow: 1; /* Allows it to take up remaining space */
+    overflow-y: auto; /* Makes it scrollable */
+    padding-bottom: 60px; /* Space for footer */
+    max-width: 90%; /* or any other value that works for your layout */
+    margin: 0 auto; /* Centers the content with equal margins on both sides */
+}
+
+/* Ensure footer is always at the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    background-color: #ddd;
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+#simplesearchCopyright {
+    margin: 0px 0px 5px 0px;
+}
+
+#searchQuery, #searchResults {
+    max-width: 1000px; /* Set the same maximum width for both */
+    margin: 20px auto; /* Center both sections with automatic horizontal margins */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left; /* Align the text to the left for searchQuery */
+    overflow-y: auto; /* Makes the content scrollable for searchResults */
+}
+
+#searchQuery {
+    background-color: #f8f8f8;
+}
+
+#searchQuery p {
+    margin: 0; /* Remove default margin */
+    font-size: 1.2em; /* Slightly larger font for emphasis */
+    color: #333; /* Dark color for better readability */
+}
+
+#searchQuery em {
+    font-style: italic;
+    font-weight: bold; /* Make the search term bold */
+    color: #0056b3; /* A color that stands out */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f8f8f8;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid #e0e0e0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+/* Search Results */
+#searchResults {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 400px; /* Fixed height */
+    overflow-y: auto; /* Makes the content scrollable */
+}
+
+#searchResults ul {
+    list-style: none;
+    padding: 0;
+}
+
+#searchResults li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#searchResults a {
+    color: #1a0dab;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+#searchResults p {
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    #searchResults {
+        max-width: 90%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+}
+
+#yarnAd {
+    /* Positioning and sizing */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 450px;
+    z-index: 1000;
+
+    /* Styling */
+    background-color: #ffffe0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-align: center;
+
+    /* Hide initially */
+    display: none;
+}
+
+#yarnAd p {
+    font-size: 1.8rem; /* More prominent font size */
+    color: #ff4500; /* Vibrant color for attention */
+    font-weight: bold; /* Bold for emphasis */
+    margin-top: 10px; /* Space above the text */
+}
+
+#closeAd {
+    /* Additional styles for the close button */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+#snailImage {
+    position: absolute; /* Position it relative to the virusScanner */
+    bottom: 0px; /* Position from the top inside the virusScanner */
+    right: 10px; /* Position from the right inside the virusScanner */
+    width: 100px; /* Adjust the size as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+#virusScanner {
+    position: fixed; /* Keeps it in the same place even when scrolling */
+    top: 50%; /* Position it halfway down the viewport */
+    left: 50%; /* Position it halfway across the viewport */
+    transform: translate(-50%, -50%); /* Adjust position to truly center it */
+    background-color: #d7d6fe; /* Light lavender background */
+    border: 2px solid #9673a6; /* Softer border color */
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Lighter shadow for a softer effect */
+    z-index: 10;
+    width: 350px;
+    height: 220px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#virusScanner h2 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #6a5acd; /* Slightly deeper lavender for contrast */
+    font-weight: bold;
+}
+
+#virusScanner p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #333; /* Maintaining dark text for readability */
+    background-color: #f8f8ff; /* Very light lavender for the text area */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Subtler inner shadow */
+}
+
+#virusScanner button {
+    padding: 10px 20px;
+    background-color: #b19cd9; /* Soft purple for action buttons */
+    color: white;
+    border: 1px solid #b19cd9;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 1em;
+    margin: 20px 5px;
+    border-radius: 5px;
+}
+
+#virusScanner button:hover {
+    background-color: #9b85c2; /* Darker purple on hover */
+    border-color: #9b85c2;
+}
+
+#progressBarContainer {
+    width: 100%;
+    background-color: #ccc; /* Lighter color for the progress bar container */
+    border-radius: 5px;
+    margin: 15px 0;
+    padding: 3px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+#progressBar {
+    height: 20px;
+    width: 0%;
+    background-color: #6a5acd; /* Complementing lavender for the progress bar */
+    border-radius: 3px;
+    transition: width 0.4s ease-in-out;
+}
+
+
+@media (max-width: 768px) {
+    .yarnGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+header {
+    background-color: #0d012f;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ensure the header content spans the full width */
+}
+
+#logo {
+    width: 250px;
+    height: 100px; /* Adjust size as needed */
+    /* Placeholder styles, replace with actual image styles */
+    background-color: #fff;
+    display: block;
+}
+
+#icons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between icons */
+}
+
+.icon, #profileIcon {
+    width: 35px;
+    height: 35px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.icon {
+    /* ... existing styles ... */
+    font-size: 24px; /* Adjust the size of the icon */
+    text-align: center;
+    line-height: 35px; /* Center the icon vertically */
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the icon */
+}
+
+.icon:nth-child(2) {
+    font-size: 34px; /* Larger font size for the gear icon */
+}
+
+#yarnDisplay {
+    padding: 1rem;
+    text-align: center; /* Center aligns the content */
+    margin-top: 2rem; /* Adds space above the yarn section */
+}
+
+#yarnDisplay h2 {
+    font-size: 2.5rem; /* Larger font size for impact */
+    color: #d9534f; /* Eye-catching color */
+    margin-bottom: 1rem;
+    font-weight: bold; /* Bold font weight for emphasis */
+}
+
+.yarnGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 0 auto; /* Centers the grid in the section */
+    max-width: 600px; /* Maximum width of the grid */
+}
+
+
+.yarn {
+    width: 180px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #fff;
+    transition: box-shadow 0.3s;
+}
+
+.yarn:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.yarn img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.yarn p {
+    margin: 0;
+    font-weight: bold;
+}
+
+#storeNav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#storeNav li a {
+    text-decoration: none;
+    color: #006963;
+    font-weight: bold;
+}
+
+#storeNav li a:hover {
+    text-decoration: underline;
+}
+
+#featuredProducts {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#featuredProducts h3 {
+    color: #d9534f;
+    margin-bottom: 10px;
+}
+
+#storeFooter {
+    text-align: center;
+    padding: 20px;
+    background-color: #006963;
+    color: white;
+    margin-top: 30px;
+}
+
+#storeFooter p {
+    margin: 0;
+}
+
+#craftDepotHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #006963; /* Teal background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#scottImage {
+    width: 100px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+    border-radius: 50%;
+    margin-right: 30px;
+    transform: scaleX(-1);
+}
+
+#craftDepotTitle {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+#craftDepotTitle span {
+    padding: 0 2px; /* Adjust padding for spacing */
+}
+
+.title-word {
+    display: inline-flex; /* Allows for inline layout with flexibility */
+    margin-right: 8px; /* Adds space between the words */
+}
+
+.title-word:last-child {
+    margin-right: 0;
+}
+
+#craftDepotTitle span:nth-child(1) { color: #FFB6C1; } /* Light Pink */
+#craftDepotTitle span:nth-child(2) { color: #FAE7B5; } /* Banana Yellow */
+#craftDepotTitle span:nth-child(3) { color: #B4EEB4; } /* Light Green */
+#craftDepotTitle span:nth-child(4) { color: #B4CDFF; } /* Light Blue */
+#craftDepotTitle span:nth-child(5) { color: #FFDAB9; } /* Peach */
+#craftDepotTitle span:nth-child(6) { color: #FFB6C1; } /* Light Pink */
+#craftDepotTitle span:nth-child(7) { color: #FAE7B5; } /* Banana Yellow */
+#craftDepotTitle span:nth-child(8) { color: #FFB6C1; } /* Light Pink */
+#craftDepotTitle span:nth-child(9) { color: #FAE7B5; } /* Banana Yellow */
+#craftDepotTitle span:nth-child(10) { color: #B4EEB4; } /* Light Green */
+#craftDepotTitle span:nth-child(11) { color: #B4CDFF; } /* Light Blue */
+#craftDepotTitle span:nth-child(12) { color: #FFDAB9; } /* Peach */
+#craftDepotTitle span:nth-child(13) { color: #FFB6C1; } /* Light Pink */
+#craftDepotTitle span:nth-child(14) { color: #FAE7B5; } /* Banana Yellow */
+#craftDepotTitle span:nth-child(15) { color: #FFB6C1; } /* Light Pink */
+#craftDepotTitle span:nth-child(16) { color: #FAE7B5; } /* Banana Yellow */
+#craftDepotTitle span:nth-child(17) { color: #B4EEB4; } /* Light Green */
+
+#aboutUsSection {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light background to differentiate the section */
+    border-radius: 8px; /* Soft rounded corners */
+}
+
+#aboutUsSection h2 {
+    text-align: center;
+    color: #0056b3; /* Header color */
+    margin-bottom: 20px;
+}
+
+#aboutUsContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#aboutUsText {
+    flex: 1;
+    font-size: 1rem;
+    line-height: 1.6; /* For readability */
+    color: #333; /* Dark text for contrast */
+}
+
+#aboutUsImageContainer {
+    flex: 1;
+}
+
+#aboutUsImage {
+    width: 100%;
+    max-width: 300px; /* Adjust based on layout needs */
+    height: auto;
+    border-radius: 8px; /* Soft rounded corners for the image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+@media (max-width: 768px) {
+    #aboutUsContent {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #aboutUsImageContainer {
+        order: -1; /* Image above the text on small screens */
+    }
+}
