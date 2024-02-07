@@ -56,13 +56,13 @@
     </head>
 
     <body>
-        <!-- <div id="scam-warning-modal" class="modal">
+        <div id="scam-warning-modal" class="modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
                 <h2>Important Warning</h2>
                 <p>Some individuals and organizations are falsely stating an affiliation with me (Scott Danzig) and Sneaky Ghost Films. Please exercise caution and contact me directly regarding any project or deal involving my name or my company. Thank you, and stay safe!</p>
             </div>
-        </div> -->
+        </div>
         <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=487122761316038&autoLogAppEvents=1"></script>	
         <div class="guidance">
@@ -577,9 +577,9 @@ mapinitialize();
             var modal = document.getElementById("scam-warning-modal");
             var span = document.getElementsByClassName("close-btn")[0];
 
-            //if (!localStorage.getItem("notFirstVisit")) {
+            if (!localStorage.getItem("notFirstVisit")) {
                 modal.style.display = "block";
-            //}
+            }
 
             span.onclick = function() {
                 modal.style.display = "none";
