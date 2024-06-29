@@ -14,7 +14,7 @@
     <meta property="og:image" content="https://sneakyghost.com/files/uploads/SneakyGhostLogo_with_background.gif" />
     <meta property="og:type" content="website" />
     <meta name="keywords" content="Sneaky Ghost Films, Sneaky Ghost, indie films, short films, Scott Danzig, production company, Pennsylvania, pittsburgh, dark, droll, independent" />
-    <meta name="copyright" content="&copy; 2019 Sneaky Ghost Films. All Rights Reserved." />
+    <meta name="copyright" content="&copy; 2024 Sneaky Ghost Films. All Rights Reserved." />
     <title>Sneaky Ghost Films</title>
     <!-- DEFAULT META TAGS -->
 
@@ -51,15 +51,8 @@
 </head>
 
 <body>
-    <div id="scam-warning-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Important Warning</h2>
-            <p>Some individuals and organizations are falsely stating an affiliation with me (Scott Danzig) and Sneaky Ghost Films. Please exercise caution and contact me directly regarding any project or deal involving my name or my company. Thank you, and stay safe!</p>
-        </div>
-    </div>
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=487122761316038&autoLogAppEvents=1"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=493282638147608" nonce="pYxLKAHd"></script>
     <div class="guidance">
         <div class="scrollarrow">
             <div class="chevron"></div>
@@ -550,32 +543,5 @@
     <script type='text/javascript' src='files/js/pond-header.js'></script>
     <script type='text/javascript' src="files/js/formspree.js"></script> <!-- Formspree email submission script -->
     <script type='text/javascript' src='files/js/script.js'></script>
-    <script>
-        var modal = document.getElementById("scam-warning-modal");
-        var span = document.getElementsByClassName("close-btn")[0];
-
-        if (!localStorage.getItem("notFirstVisit")) {
-            modal.style.display = "block";
-        }
-
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            console.log("in window.onclick, target = ", event.target);
-            console.log("Target ID: " + event.target.id);
-            console.log("Target Class: " + event.target.className);
-
-            if (event.target == modal) {
-                console.log("target is modal");
-                modal.style.display = "none";
-            }
-        }
-
-        window.addEventListener('unload', function() {
-            localStorage.setItem("notFirstVisit", "true");
-        });
-    </script>
 </body>
 </html>
