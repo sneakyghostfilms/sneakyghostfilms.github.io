@@ -2736,6 +2736,33 @@ div.services ul {
 	margin-right: 5px;
 }
 
+.right-float {
+  float: right;
+}
+
+.fb-like {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* New styles for the button */
+.button {
+  display: inline-block;
+  background-color: #1e40af; /* Background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  font-size: 14px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  z-index: 100000; /* Ensure it is on top of other elements */
+  position: relative; /* Required for z-index to work */
+}
+
+.button:hover {
+  background-color: #1d4ed8; /* Hover background color */
+}
+
 .modal {
     display: none;
     position: fixed;
