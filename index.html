@@ -75,6 +75,52 @@
                 width: 100% !important;
                 padding: 20px !important;
             }
+            
+            /* Add space below demo reel on mobile */
+            #about .film-media {
+                margin-bottom: 60px !important;
+            }
+        }
+    </style>
+    
+    <!-- Global style overrides -->
+    <style type="text/css">
+        /* Add space below demo reel globally and limit width */
+        .demo-reel-container {
+            margin-bottom: 20px !important;
+            max-width: 800px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        
+        /* Make video container responsive */
+        .fitvidsignore {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 800px !important;
+            margin: 0 auto !important;
+        }
+        
+        /* Ensure iframe sits properly in container */
+        .fitvidsignore iframe {
+            width: 100% !important;
+            max-width: 800px !important;
+        }
+        
+        /* Center contact form */
+        #contact-split .split-left {
+            float: none !important;
+            margin: 0 auto !important;
+        }
+        
+        #contact-split .split-wrapped-content {
+            float: none !important;
+            margin: 0 auto !important;
+            max-width: 500px !important;
+        }
+        
+        #contact-split .split-right {
+            display: none;
         }
     </style>
 </head>
@@ -429,7 +475,7 @@
                         </div>
                     </div>
                     <div class="spacer spacer-big"></div>
-                    <div class="film-media">
+                    <div class="film-media demo-reel-container">
                         <div class="film">
                             <h4 class="title-minimal">Demo Reel</h4>
                             <div class="spacer spacer-small"></div>
@@ -438,11 +484,6 @@
                             </div>
                         </div>
                     </div><!-- film-media -->
-                    <div class="spacer spacer-big"></div>
-                    <div class="spacer spacer-big"></div>
-                    <div class="spacer spacer-big"></div>
-                    <div class="spacer spacer-big"></div>
-                    <div class="spacer spacer-big"></div>
                     <div class="spacer spacer-small"></div>
                 </div>
             </section> <!-- END about -->

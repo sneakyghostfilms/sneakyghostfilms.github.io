@@ -2589,9 +2589,11 @@ a.sr-button2:hover { border-color: #ffffff; color: #0d0d0d; }
 }
 
 div.film-media {
-    position: absolute;
-    left: 0;
-    right: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; 
+    margin-bottom: 60px; /* Add bottom margin globally */
 }
 
 div.cast {
@@ -2809,5 +2811,12 @@ div.services ul {
 
 .close-btn:hover,
 .close-btn:focus {
-    color: #ff4040;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add space below demo reel */
+.demo-reel-container {
+    margin-bottom: 80px !important;
 }
