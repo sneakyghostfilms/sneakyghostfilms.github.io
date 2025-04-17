@@ -237,6 +237,79 @@ h6 { font-size: 14px; line-height: 20px; }
 .wrapper { width: 260px; }
 .wrapper-small { width: 260px; }
 
+/* Film titles below the thumbnails on mobile */
+.imgoverlay.name-hidden .overlaycaption h5.overlay-name {
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important; 
+    background: transparent !important;
+    color: #ffffff !important;
+    padding: 80px 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+    display: block !important;
+    min-height: 60px !important;
+}
+
+/* Move titles out of the overlay to ensure they're visible */
+.portfolio-masonry-entry .entry-thumb.portfolio-thumb {
+    margin-bottom: 10px !important;
+    position: relative !important;
+}
+
+.portfolio-masonry-entry .entry-thumb.portfolio-thumb .overlay-name {
+    position: relative !important;
+    margin-top: 5px !important;
+}
+
+/* Hide the overlay elements */
+.imgoverlay.name-hidden .overlaycaption .separator-small,
+.imgoverlay.name-hidden .overlaycaption h6.alttitle {
+    display: none !important;
+}
+
+/* Remove dark overlay from thumbnails */
+.imgoverlay.overlay-dark.overlay-transparent:after {
+    opacity: 0 !important;
+}
+
+/* Move the overlay name outside the image */
+.entry-thumb.portfolio-thumb {
+    margin-bottom: 10px !important;
+}
+
+/* Fix video playback on mobile */
+.film iframe {
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+}
+
+.responsive-video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.responsive-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.videobg-section {
+    background-color: #000000 !important; /* Fallback color */
+    background-image: url('../../files/uploads/bigcatlogo.jpg') !important; /* Use absolute path to site root */
+    background-size: cover !important; /* Ensure it covers the area */
+    background-position: center center !important; /* Center the image */
+    background-repeat: no-repeat !important; /* Prevent tiling */
+}
+
 .split-wrapped-content, .split-full-content, .split-mini-content { width: 260px !important; }
 .vertical-center { padding-top: 80px; padding-bottom: 80px; }
 

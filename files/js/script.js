@@ -534,3 +534,35 @@ function splitSection() {
 	}
 	
 }
+
+// Function to handle iframe responsiveness
+function handleIframeResponsiveness() {
+    // Make iframes in film divs responsive
+    var filmIframes = document.querySelectorAll('.film iframe, .fitvidsignore iframe');
+    
+    function resizeIframes() {
+        for (var i = 0; i < filmIframes.length; i++) {
+            var iframe = filmIframes[i];
+            var container = iframe.parentElement;
+            var containerWidth = container.offsetWidth;
+            
+            // Calculate height based on aspect ratio (16:9)
+            var height = containerWidth * 0.5625;
+            
+            // Set minimum height for very small screens
+            if (height < 200) height = 200;
+            
+            iframe.style.width = containerWidth + 'px';
+            iframe.style.height = height + 'px';
+        }
+    }
+    
+    // Run on load and resize
+    window.addEventListener('resize', resizeIframes);
+    resizeIframes();
+}
+
+// Run when DOM is ready
+jQuery(document).ready(function() {
+    handleIframeResponsiveness();
+});

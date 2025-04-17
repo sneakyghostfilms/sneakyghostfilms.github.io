@@ -48,6 +48,35 @@
     <style type="text/css"></style>
     <link href="https://cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
     <script src="files/js/jquery-1.9.1.min.js"></script> <!-- JQuery library -->
+    
+    <!-- Custom responsive fixes -->
+    <style type="text/css">
+        @media only screen and (max-width: 640px) {
+            .fb-like.right-float {
+                display: none !important;
+            }
+            
+            .fitvidsignore iframe {
+                max-width: 100% !important;
+                height: auto !important;
+                min-height: 200px !important;
+            }
+            
+            #founder-window {
+                flex-direction: column !important;
+            }
+            
+            #founder-img {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            #founder-text-container {
+                width: 100% !important;
+                padding: 20px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
