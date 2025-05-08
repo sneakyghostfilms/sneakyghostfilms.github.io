@@ -2655,6 +2655,45 @@ div.services ul {
   justify-content: center;
   align-items: flex-end;
   position: absolute;
+}
+
+/* --- Custom: Prevent cast lineup wrapping for A Ranger's Way --- */
+.cast.cast-one-row ul, .cast.cast-two-row ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  padding-bottom: 0.5em;
+}
+
+.cast.cast-one-row ul li, .cast.cast-two-row ul li {
+  flex: 0 1 calc(20% - 2em); /* 5 per row */
+  max-width: calc(100%/5 - 2em);
+  box-sizing: border-box;
+}
+
+
+.cast.cast-seven-row ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  padding-bottom: 0.5em;
+}
+
+.cast.cast-seven-row ul li {
+  flex: 0 1 calc(12.5% - 2em); /* 100/8 = 12.5, but 7 will fit with gap */
+  max-width: calc(100%/7 - 2em);
+  box-sizing: border-box;
+}
+
+
+
+.cast.cast-one-row ul li, .cast.cast-two-row ul li {
+  min-width: 0;
+}
+
+
   width: 100%;
   height: 100%;
   z-index: 40000;
