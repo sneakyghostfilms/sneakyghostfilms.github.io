@@ -2491,7 +2491,7 @@ a.sr-button2:hover { border-color: #ffffff; color: #0d0d0d; }
 .bordered footer.sticky-footer { bottom: 0px; }
 .bordered footer .socialmedia-widget { margin-top: 8px; }
 .bordered footer .copyright { line-height: 40px; }
-
+.bordered footer .socialmedia-widget { margin-top: 8px; }
 .bordered .tp-bullets.simplebullets.round { width: 25px; right: -40px !important; z-index: 100005; }
 .bordered .tp-bullets.simplebullets.round .bullet:before { background: #0d0d0d; }
 .bordered .tp-bullets.simplebullets.round .bullet.selected { border-color: #0d0d0d; }
@@ -2670,7 +2670,6 @@ div.services ul {
   box-sizing: border-box;
 }
 
-
 .cast.cast-seven-row ul {
   display: flex;
   flex-wrap: wrap;
@@ -2689,6 +2688,23 @@ div.services ul {
   min-width: 0;
 }
 
+.cast.cast-five-row ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  padding-bottom: 0.5em;
+}
+
+.cast.cast-five-row ul li {
+  flex: 0 1 calc(16.66% - 2em); /* 100/6 = 16.66, but 5 will fit with gap */
+  max-width: calc(100%/5 - 2em);
+  box-sizing: border-box;
+}
+
+.cast.cast-five-row ul li, .cast.cast-seven-row ul li {
+  min-width: 0;
+}
 
   width: 100%;
   height: 100%;
