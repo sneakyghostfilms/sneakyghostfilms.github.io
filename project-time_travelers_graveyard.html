@@ -22,6 +22,7 @@
 <link rel="stylesheet" id='fontawesome-style-css' href="files/css/font-awesome.min.css" type="text/css" media="all" />
 <link rel="stylesheet" id='pe-icons-style-css' href="files/css/pe-icon-7-stroke.css" type="text/css" media="all" />
 <link rel='stylesheet' id='mqueries-style-css'  href='files/css/mqueries.css' type='text/css' media='all' />
+<link rel="stylesheet" href="files/css/cast.css">
 <!-- CSS -->
 
 <!-- FAVICON -->
@@ -156,19 +157,27 @@
                         <h4 class="title-minimal">Cast</h4>
                     </div>
                     <div class="spacer spacer-small"></div>
-                    <div class="cast cast-two-row">
-                        <ul>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/time_travelers_graveyard/lee-200x300.jpg" alt="Lee Blair"></img></div><div class="cast-desc">Lee Blair<br>as James</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/time_travelers_graveyard/andrea-200x300.jpg" alt="Andrea Disch"></img></div><div class="cast-desc">Andrea Disch<br>as Sophia</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/time_travelers_graveyard/erik-200x300.jpg" alt="Erik Thompson"></img></div><div class="cast-desc">Erik Thompson<br>as Darren</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/time_travelers_graveyard/eric-200x300.jpg" alt="Eric Molina"></img></div><div class="cast-desc">Eric Molina<br>as Chuck</div></div></a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/time_travelers_graveyard/stephanie-200x300.jpg" alt="Stephanie Swift"></img></div><div class="cast-desc">Stephanie Swift<br>as Coworker</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/time_travelers_graveyard/jenna-200x300.jpg" alt="Jenna Chung"></img></div><div class="cast-desc">Jenna Chung<br>as Coworker</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/time_travelers_graveyard/kevin-200x300.jpg" alt="Kevin Mahler"></img></div><div class="cast-desc">Kevin Mahler<br>as Coworker</div></div></a></li>
-                        </ul>
-                    </div>                	
+                    <!-- BEGIN CASTGRID -->
+                    <div data-cast>
+                        <script type="application/json">
+                        {
+                            "rows": [
+                                [
+                                    { "name": "Lee Blair", "role": "as James", "img": "files/uploads/cast/time_travelers_graveyard/lee-200x300.jpg" },
+                                    { "name": "Andrea Disch", "role": "as Sophia", "img": "files/uploads/cast/time_travelers_graveyard/andrea-200x300.jpg" },
+                                    { "name": "Erik Thompson", "role": "as Darren", "img": "files/uploads/cast/time_travelers_graveyard/erik-200x300.jpg" },
+                                    { "name": "Eric Molina", "role": "as Chuck", "img": "files/uploads/cast/time_travelers_graveyard/eric-200x300.jpg" }
+                                ],
+                                [
+                                    { "name": "Stephanie Swift", "role": "as Coworker", "img": "files/uploads/cast/time_travelers_graveyard/stephanie-200x300.jpg" },
+                                    { "name": "Jenna Chung", "role": "as Coworker", "img": "files/uploads/cast/time_travelers_graveyard/jenna-200x300.jpg" },
+                                    { "name": "Kevin Mahler", "role": "as Coworker", "img": "files/uploads/cast/time_travelers_graveyard/kevin-200x300.jpg" }
+                                ]
+                            ]
+                        }
+                        </script>
+                    </div>
+                    <!-- END CASTGRID -->
                     <div class="spacer spacer-medium"></div>
                 </div> <!-- film-media -->
 
@@ -214,6 +223,7 @@
 <script type='text/javascript' src='files/js/jquery.parallax.min.js'></script>
 <script type='text/javascript' src='files/js/pond-header.js'></script>
 <script type='text/javascript' src='files/js/script.js'></script>
+<script defer src="files/js/cast.js"></script>
 <!-- SCRIPTS -->
 
 </body>

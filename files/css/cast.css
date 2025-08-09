@@ -1,0 +1,15 @@
+/* CastGrid — 200×300 cards, auto-cropped via CSS */
+.cast { display: grid; gap: 16px; }
+.cast__row { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.cast__card { text-align: center; }
+.cast__thumb {
+  width: 100%;
+  aspect-ratio: 2 / 3;     /* 200x300 look without editing images */
+  object-fit: cover;        /* crop to frame */
+  object-position: 50% 40%; /* bias up to keep eyes centered */
+  border-radius: 6px;
+  display: block;
+}
+.cast__name { margin-top: 8px; font-weight: 700; line-height: 1.2; }
+.cast__role { font-size: 0.95rem; opacity: 0.8; }
+@media (min-width: 900px) { .cast, .cast__row { gap: 20px; } }

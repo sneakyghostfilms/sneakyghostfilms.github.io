@@ -22,6 +22,7 @@
 <link rel="stylesheet" id='fontawesome-style-css' href="files/css/font-awesome.min.css" type="text/css" media="all" />
 <link rel="stylesheet" id='pe-icons-style-css' href="files/css/pe-icon-7-stroke.css" type="text/css" media="all" />
 <link rel='stylesheet' id='mqueries-style-css'  href='files/css/mqueries.css' type='text/css' media='all' />
+<link rel="stylesheet" href="files/css/cast.css">
 <!-- CSS -->
 
 <!-- FAVICON -->
@@ -155,18 +156,26 @@
                         <h4 class="title-minimal">Cast</h4>
                     </div>
                     <div class="spacer spacer-small"></div>
-                    <div class="cast cast-two-row">
-                        <ul>
-                            <li><a href="http://www.imdb.com/name/nm7753472/"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/karma/maria_carroll-200x300.jpg" alt="Maria Carroll"></img></div><div class="cast-desc">Maria Carroll<br>as Laura</div></div></a></li>
-                            <li><a href="http://www.mariamoga.com/"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/karma/maria_moga-200x300.jpg" alt="Maria Moga"></img></div><div class="cast-desc">Maria Moga<br>as Madelyn</div></div></a></li>
-                            <li><a href="http://www.imdb.com/name/nm1621211/"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/karma/geoff-200x300.jpg" alt="Geoff Mays"></img></div><div class="cast-desc">Geoff Mays<br>as Warren</div></div></a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="http://www.imdb.com/name/nm5489490/"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/karma/james-200x300.jpg" alt="James Cheng"></img></div><div class="cast-desc">James Cheng<br>as Mr. Sakamoto</div></div></a></li>
-                            <li><a href="http://justinprincemoy.com/jpm.html"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/karma/justin-200x300.jpg" alt="Justin Prince Moy"></img></div><div class="cast-desc">Justin Prince Moy<br>as the Assistant</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/karma/may-200x300.jpg" alt="May"></img></div><div class="cast-desc">May<br>as the Cat</div></div></a></li>
-                        </ul>
+                    <!-- BEGIN CASTGRID -->
+                    <div data-cast>
+                        <script type="application/json">
+                        {
+                            "rows": [
+                                [
+                                    { "name": "Maria Carroll", "role": "as Laura", "img": "files/uploads/cast/karma/maria_carroll-200x300.jpg", "link": "http://www.imdb.com/name/nm7753472/" },
+                                    { "name": "Maria Moga", "role": "as Madelyn", "img": "files/uploads/cast/karma/maria_moga-200x300.jpg", "link": "http://www.mariamoga.com/" },
+                                    { "name": "Geoff Mays", "role": "as Warren", "img": "files/uploads/cast/karma/geoff-200x300.jpg", "link": "http://www.imdb.com/name/nm1621211/" }
+                                ],
+                                [
+                                    { "name": "James Cheng", "role": "as Mr. Sakamoto", "img": "files/uploads/cast/karma/james-200x300.jpg", "link": "http://www.imdb.com/name/nm5489490/" },
+                                    { "name": "Justin Prince Moy", "role": "as the Assistant", "img": "files/uploads/cast/karma/justin-200x300.jpg", "link": "http://justinprincemoy.com/jpm.html" },
+                                    { "name": "May", "role": "as the Cat", "img": "files/uploads/cast/karma/may-200x300.jpg" }
+                                ]
+                            ]
+                        }
+                        </script>
                     </div>
+                    <!-- END CASTGRID -->
                     <div class="spacer spacer-big"></div>
                     <div class="film">
                         <h4 class="title-minimal">
@@ -219,6 +228,7 @@
 <script type='text/javascript' src='files/js/jquery.parallax.min.js'></script>
 <script type='text/javascript' src='files/js/pond-header.js'></script>
 <script type='text/javascript' src='files/js/script.js'></script>
+<script defer src="files/js/cast.js"></script>
 <!-- SCRIPTS -->
 
 </body>

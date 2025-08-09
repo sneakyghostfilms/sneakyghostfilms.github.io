@@ -22,6 +22,7 @@
 <link rel="stylesheet" id='fontawesome-style-css' href="files/css/font-awesome.min.css" type="text/css" media="all" />
 <link rel="stylesheet" id='pe-icons-style-css' href="files/css/pe-icon-7-stroke.css" type="text/css" media="all" />
 <link rel='stylesheet' id='mqueries-style-css'  href='files/css/mqueries.css' type='text/css' media='all' />
+<link rel="stylesheet" href="files/css/cast.css">
 <!-- CSS -->
 
 <!-- FAVICON -->
@@ -162,13 +163,19 @@
                         <h4 class="title-minimal">Cast</h4>
                     </div>
                     <div class="spacer spacer-small"></div>
-                    <div class="cast cast-one-row">
-                        <ul>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/ten/kate-200x300.jpg" alt="Kate Blackwood"></img></div><div class="cast-desc">Kate Blackwood<br>as Penelope</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/ten/sylvie-200x300.jpg" alt="Sylvie Yntema"></img></div><div class="cast-desc">Sylvie Yntema<br>as Jeanette</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/ten/scott-200x300.jpg" alt="Scott Rougeau"></img></div><div class="cast-desc">Scott Rougeau<br>as Greg</div></div></a></li>
-                        </ul>
+                    <!-- BEGIN CASTGRID -->
+                    <div data-cast data-per-row="3">
+                        <script type="application/json">
+                        {
+                            "members": [
+                                { "name": "Kate Blackwood", "role": "as Penelope", "img": "files/uploads/cast/ten/kate-200x300.jpg" },
+                                { "name": "Sylvie Yntema", "role": "as Jeanette", "img": "files/uploads/cast/ten/sylvie-200x300.jpg" },
+                                { "name": "Scott Rougeau", "role": "as Greg", "img": "files/uploads/cast/ten/scott-200x300.jpg" }
+                            ]
+                        }
+                        </script>
                     </div>
+                    <!-- END CASTGRID -->
                     <div class="spacer spacer-big"></div>
                     <div class="film">
                         <h4 class="title-minimal">
@@ -229,6 +236,7 @@
 <script type='text/javascript' src='files/js/jquery.parallax.min.js'></script>
 <script type='text/javascript' src='files/js/pond-header.js'></script>
 <script type='text/javascript' src='files/js/script.js'></script>
+<script defer src="files/js/cast.js"></script>
 <!-- SCRIPTS -->
 
 </body>

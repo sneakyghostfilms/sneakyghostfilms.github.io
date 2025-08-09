@@ -22,6 +22,7 @@
 <link rel="stylesheet" id='fontawesome-style-css' href="files/css/font-awesome.min.css" type="text/css" media="all" />
 <link rel="stylesheet" id='pe-icons-style-css' href="files/css/pe-icon-7-stroke.css" type="text/css" media="all" />
 <link rel='stylesheet' id='mqueries-style-css'  href='files/css/mqueries.css' type='text/css' media='all' />
+<link rel="stylesheet" href="files/css/cast.css">
 <!-- CSS -->
 
 <!-- FAVICON -->
@@ -162,18 +163,26 @@
                         <h4 class="title-minimal">Cast</h4>
                     </div>
                     <div class="spacer spacer-small"></div>
-                    <div class="cast cast-two-row">
-                        <ul>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/toddler_tartare/caroline-200x300.jpg" alt="Caroline Manring"></img></div><div class="cast-desc">Caroline Manring<br>as Violet</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/toddler_tartare/philip-200x300.jpg" alt="Philip Hart"></img></div><div class="cast-desc">Philip Hart<br>as Adam</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/toddler_tartare/maria-200x300.jpg" alt="Maria Moga"></img></div><div class="cast-desc">Maria Moga<br>as Evelyn</div></div></a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/toddler_tartare/jean-200x300.jpg" alt="Jean Graham"></img></div><div class="cast-desc">Jean Graham<br>as Charlotte</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/toddler_tartare/aj-200x300.jpg" alt="AJ Sage"></img></div><div class="cast-desc">AJ Sage<br>as the Chef</div></div></a></li>
-                            <li><a href="#"><div class="cast-member"><div class="cast-pic"><img src="files/uploads/cast/toddler_tartare/mark-200x300.jpg" alt="Mark Dickinson"></img></div><div class="cast-desc">Mark Dickinson<br>as the Guard</div></div></a></li>
-                        </ul>
+                    <!-- BEGIN CASTGRID -->
+                    <div data-cast>
+                        <script type="application/json">
+                        {
+                            "rows": [
+                                [
+                                    { "name": "Caroline Manring", "role": "as Violet", "img": "files/uploads/cast/toddler_tartare/caroline-200x300.jpg" },
+                                    { "name": "Philip Hart", "role": "as Adam", "img": "files/uploads/cast/toddler_tartare/philip-200x300.jpg" },
+                                    { "name": "Maria Moga", "role": "as Evelyn", "img": "files/uploads/cast/toddler_tartare/maria-200x300.jpg" }
+                                ],
+                                [
+                                    { "name": "Jean Graham", "role": "as Charlotte", "img": "files/uploads/cast/toddler_tartare/jean-200x300.jpg" },
+                                    { "name": "AJ Sage", "role": "as the Chef", "img": "files/uploads/cast/toddler_tartare/aj-200x300.jpg" },
+                                    { "name": "Mark Dickinson", "role": "as the Guard", "img": "files/uploads/cast/toddler_tartare/mark-200x300.jpg" }
+                                ]
+                            ]
+                        }
+                        </script>
                     </div>
+                    <!-- END CASTGRID -->
                     <div class="spacer spacer-big"></div>
                     <div class="film">
                         <h4 class="title-minimal">
@@ -226,6 +235,7 @@
 <script type='text/javascript' src='files/js/jquery.parallax.min.js'></script>
 <script type='text/javascript' src='files/js/pond-header.js'></script>
 <script type='text/javascript' src='files/js/script.js'></script>
+<script defer src="files/js/cast.js"></script>
 <!-- SCRIPTS -->
 
 </body>
