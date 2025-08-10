@@ -164,7 +164,8 @@
                     </div>
                     <div class="spacer spacer-small"></div>
                     <!-- BEGIN CASTGRID -->
-                    <div data-cast>
+                    <!-- Force two rows: 7 on the first row, 6 on the second; allow shrink to 120px min -->
+                    <div data-cast data-cols="7,6" style="--cast-min: 120px; --cast-color:#fff;">
                         <script type="application/json">
                         {
                             "rows": [
