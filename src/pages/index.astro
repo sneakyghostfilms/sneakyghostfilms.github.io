@@ -166,38 +166,141 @@ import { films } from '../data/films';
           height: auto !important;
           min-height: 200px !important;
         }
+        /* Founder/About section mobile fixes */
+        #founder-section {
+          height: auto !important;
+        }
         #founder-window {
+          min-width: unset !important;
+          left: 0 !important;
+          display: flex !important;
           flex-direction: column !important;
         }
         #founder-img {
+          float: none !important;
           width: 100% !important;
           max-width: 100% !important;
+          height: auto !important;
+        }
+        #founder-img img {
+          width: 100% !important;
+          height: auto !important;
         }
         #founder-text-container {
           width: 100% !important;
-          padding: 20px !important;
+          padding: 30px 20px !important;
+          box-sizing: border-box !important;
+        }
+        #founder-text p {
+          margin: 0 !important;
+          line-height: 1.6 !important;
+        }
+        #founder-text {
+          max-width: 100% !important;
+          padding: 0 !important;
+          position: static !important;
+          transform: none !important;
+          left: auto !important;
+          top: auto !important;
+        }
+        #founder-img .overlaycaption {
+          padding: 15px !important;
+          text-align: center !important;
         }
         #about .film-media {
           margin-bottom: 60px !important;
         }
+        .demo-reel-container {
+          padding: 0 15px !important;
+        }
+        .demo-reel-container h4 {
+          text-align: center !important;
+        }
+        .demo-reel-container .film {
+          min-width: unset !important;
+          height: auto !important;
+          width: 100% !important;
+        }
       }
 
-      /* Demo reel styles */
+      /* Responsive layout for most screens */
+      @media only screen and (max-width: 1200px) {
+        #founder-section {
+          height: auto !important;
+        }
+        #founder-window {
+          min-width: unset !important;
+          left: 0 !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+        #founder-img {
+          float: none !important;
+          width: 100% !important;
+          height: auto !important;
+        }
+        #founder-img img {
+          width: 100% !important;
+          height: auto !important;
+        }
+        #founder-text-container {
+          width: 100% !important;
+          padding: 40px 30px !important;
+          box-sizing: border-box !important;
+        }
+        #founder-text {
+          max-width: 600px !important;
+          margin: 0 auto !important;
+          padding: 0 !important;
+          position: static !important;
+          transform: none !important;
+          left: auto !important;
+          top: auto !important;
+        }
+        #founder-img .overlaycaption {
+          padding: 20px !important;
+          text-align: center !important;
+        }
+        .demo-reel-container .film {
+          min-width: unset !important;
+          height: auto !important;
+          width: 100% !important;
+        }
+      }
+
+      /* Demo reel styles - global overrides */
       .demo-reel-container {
         margin-bottom: 20px !important;
         max-width: 800px !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+      }
+      .demo-reel-container .film {
+        min-width: unset !important;
+        height: auto !important;
+        width: 100% !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 0 auto !important;
       }
       .fitvidsignore {
         position: relative !important;
         width: 100% !important;
         max-width: 800px !important;
         margin: 0 auto !important;
+        padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
+        height: 0 !important;
+        overflow: hidden !important;
       }
       .fitvidsignore iframe {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
         width: 100% !important;
-        max-width: 800px !important;
+        height: 100% !important;
+        max-width: none !important;
       }
 
       /* Contact form centering */
