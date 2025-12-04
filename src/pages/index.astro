@@ -22,7 +22,7 @@ import { films } from '../data/films';
           </div>
         </div>
         <div class="spacer spacer-medium"></div>
-        <div class="masonry portfolio-entries masonry-spaced clearfix" data-maxitemwidth="400" id="portfolio-grid">
+        <div class="portfolio-entries" id="portfolio-grid">
           {films.map((film) => (
             <FilmCard
               title={film.title}
@@ -212,6 +212,50 @@ import { films } from '../data/films';
       }
       #contact-split .split-right {
         display: none;
+      }
+
+      /* CSS Grid for portfolio - replaces isotope masonry */
+      #portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        padding: 0 40px;
+      }
+
+      #portfolio-grid .portfolio-entry {
+        width: 100%;
+      }
+
+      #portfolio-grid .entry-thumb {
+        position: relative;
+        overflow: hidden;
+      }
+
+      #portfolio-grid .imgoverlay {
+        display: block;
+        position: relative;
+      }
+
+      #portfolio-grid .imgoverlay img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      @media (max-width: 1024px) {
+        #portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+          padding: 0 30px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        #portfolio-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 0 20px;
+        }
       }
     </style>
   </Fragment>
