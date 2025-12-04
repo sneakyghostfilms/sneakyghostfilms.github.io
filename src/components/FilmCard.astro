@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  genre: string;
+  slug: string;
+  image: string;
+  categories: string[];
+}
+
+const { title, genre, slug, image, categories } = Astro.props;
+const categoryClasses = categories.join(' ');
+
+// Generate responsive image paths
+const basePath = image.replace('_800x600.jpg', '');
+const webpPath = `${basePath}_800x600.webp`;
+const webpThumb = `${basePath}_400w.webp`;
+const jpgThumb = `${basePath}_400w.jpg`;
+---
+
+<div class={`portfolio-masonry-entry masonry-item ${categoryClasses}`}>
+  <div class="entry-thumb portfolio-thumb">
+    <div class="imgoverlay overlay-dark overlay-transparent name-hidden">
+      <picture>
+        <source
+          srcset={webpThumb}
+          media="(max-width: 640px)"
+          type="image/webp"
+        />
+        <source
+          srcset={webpPath}
+          type="image/webp"
+        />
+        <source
+          srcset={jpgThumb}
+          media="(max-width: 640px)"
+        />
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <div class="overlaycaption">
+        <h5 class="overlay-name title-minimal"><strong>{title}</strong></h5>
+        <div class="separator-small"><span></span></div>
+        <h6 class="alttitle">{genre}</h6>
+      </div>
+      <a class="transition" href={`/films/${slug}`} aria-label={`View ${title}`}></a>
+    </div>
+  </div>
+</div>

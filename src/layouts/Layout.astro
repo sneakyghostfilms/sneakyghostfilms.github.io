@@ -1,0 +1,144 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  isProjectPage?: boolean;
+}
+
+const {
+  title,
+  description = "Classic dark 'n' droll shorts and features from Pittsburgh-based filmmaker Scott Danzig.",
+  ogImage = "/files/uploads/SneakyGhostLogo_with_background.gif",
+  isProjectPage = false
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://sneakyghost.com');
+---
+
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- SEO Meta -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Sneaky Ghost Films" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Keywords -->
+  <meta name="keywords" content="Sneaky Ghost Films, Sneaky Ghost, indie films, short films, Scott Danzig, production company, Pennsylvania, pittsburgh, dark, droll, independent" />
+  <meta name="copyright" content="© 2025 Sneaky Ghost Films. All Rights Reserved." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/files/css/style.css" />
+  <link rel="stylesheet" href="/files/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/files/css/pe-icon-7-stroke.css" />
+  <link rel="stylesheet" href="/files/css/mqueries.css" />
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="/files/uploads/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/files/uploads/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/files/uploads/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/files/uploads/favicon-16x16.png" />
+  <link rel="manifest" href="/files/uploads/manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube.com https://vimeo.com https://formspree.io; connect-src 'self' https://formspree.io https://maps.googleapis.com; frame-ancestors 'self';" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sneaky Ghost Films",
+    "url": "https://sneakyghost.com/",
+    "logo": "https://sneakyghost.com/files/uploads/SneakyGhostLogo_with_background.gif",
+    "sameAs": [
+      "https://facebook.com/sneakyghost/",
+      "https://instagram.com/lunachomper/",
+      "https://www.linkedin.com/in/scottdanzig/"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Scott Danzig",
+      "jobTitle": "Director / Software Engineer",
+      "url": "https://sneakyghost.com/"
+    }
+  })} />
+
+  <slot name="head" />
+</head>
+<body>
+
+  <!-- Scroll Arrow -->
+  <div class="guidance">
+    <div class={isProjectPage ? "scrollarrow-for-project" : "scrollarrow"}>
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+    </div>
+  </div>
+
+  <!-- Page Loader -->
+  <div id="page-loader" class="text-light">
+    <div class="page-loader-inner">
+      <div class="loader-logo-name">
+        <img src="/files/uploads/eyes-logo-light-transparent.png" alt="Loading..." />
+      </div>
+      <h6 class="alttitle title-minimal">Loading</h6>
+    </div>
+  </div>
+
+  <div id="page-content">
+    <slot />
+  </div>
+
+  <!-- Scripts -->
+  <script is:inline>
+    // Page loader removal
+    (function() {
+      function hideLoader() {
+        var loader = document.getElementById('page-loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.add('loading-end');
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          setTimeout(hideLoader, 50);
+        });
+      } else {
+        setTimeout(hideLoader, 50);
+      }
+      window.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 2000);
+    })();
+  </script>
+
+  <slot name="scripts" />
+</body>
+</html>

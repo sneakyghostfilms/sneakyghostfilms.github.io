@@ -1,0 +1,145 @@
+---
+import type { CastMember } from '../data/films';
+
+interface Props {
+  cast: CastMember[];
+}
+
+const { cast } = Astro.props;
+
+// Calculate balanced row distribution
+// Max 5 per row, distribute evenly with larger rows on top
+function getRowDistribution(total: number): number[] {
+  if (total <= 5) return [total];
+
+  const numRows = Math.ceil(total / 5);
+  const base = Math.floor(total / numRows);
+  const remainder = total % numRows;
+
+  const rows: number[] = [];
+  for (let i = 0; i < numRows; i++) {
+    // First 'remainder' rows get one extra item
+    rows.push(i < remainder ? base + 1 : base);
+  }
+  return rows;
+}
+
+const rowSizes = getRowDistribution(cast.length);
+
+// Split cast into rows based on distribution
+function splitIntoRows(cast: CastMember[], sizes: number[]): CastMember[][] {
+  const rows: CastMember[][] = [];
+  let index = 0;
+  for (const size of sizes) {
+    rows.push(cast.slice(index, index + size));
+    index += size;
+  }
+  return rows;
+}
+
+const castRows = splitIntoRows(cast, rowSizes);
+---
+
+<div class="cast-grid">
+  {castRows.map((row) => (
+    <div class="cast-row">
+      {row.map((member) => (
+        <div class="cast-member">
+          <div class="cast-photo">
+            <img
+              src={member.img}
+              alt={member.name}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="cast-info">
+            {member.link ? (
+              <a href={member.link} target="_blank" rel="noopener noreferrer" class="cast-name">
+                {member.name}
+              </a>
+            ) : (
+              <span class="cast-name">{member.name}</span>
+            )}
+            <span class="cast-role">{member.role}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+
+<style>
+  .cast-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .cast-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .cast-member {
+    text-align: center;
+    width: 200px;
+  }
+
+  .cast-photo {
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    background: #222;
+  }
+
+  .cast-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .cast-member:hover .cast-photo img {
+    transform: scale(1.05);
+  }
+
+  .cast-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cast-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a.cast-name:hover {
+    color: #ccc;
+    text-decoration: underline;
+  }
+
+  .cast-role {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  /* On small screens, allow rows to wrap but keep image size */
+  @media (max-width: 600px) {
+    .cast-row {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+</style>

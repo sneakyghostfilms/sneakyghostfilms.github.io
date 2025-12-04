@@ -1,0 +1,422 @@
+---
+interface Props {
+  isHomePage?: boolean;
+  projectTitle?: string;
+}
+
+const { isHomePage = false, projectTitle } = Astro.props;
+
+// Navigation links differ on homepage vs project pages
+const navLinks = isHomePage
+  ? [
+      { href: "#home", letter: "H", label: "Home" },
+      { href: "#productions", letter: "P", label: "Productions" },
+      { href: "#about", letter: "A", label: "About Scott" },
+      { href: "#contact", letter: "C", label: "Contact" },
+    ]
+  : [
+      { href: "/", letter: "H", label: "Home" },
+      { href: "/#about", letter: "A", label: "About" },
+      { href: "/#productions", letter: "P", label: "Productions" },
+      { href: "/#contact", letter: "C", label: "Contact" },
+    ];
+
+const socialLinks = [
+  { platform: "facebook", url: "https://facebook.com/sneakyghost/" },
+  { platform: "linkedin", url: "https://www.linkedin.com/in/scottdanzig/" },
+  { platform: "instagram", url: "https://instagram.com/lunachomper/" },
+];
+---
+
+{isHomePage && (
+  <a class="fb-like-fixed" id="fb-like-fixed" href="https://facebook.com/sneakyghost" target="_blank" rel="noopener noreferrer">
+    Follow on Facebook
+  </a>
+)}
+
+<!-- Floating hamburger for initial view (lower-left) - homepage only -->
+{isHomePage && (
+  <div class="floating-nav-trigger" id="floating-nav-trigger">
+    <a href="#" class="open-nav" aria-label="Open navigation menu" aria-expanded="false">
+      <svg viewBox="0 0 24 18" fill="currentColor">
+        <rect y="0" width="24" height="2"/>
+        <rect y="8" width="24" height="2"/>
+        <rect y="16" width="24" height="2"/>
+      </svg>
+    </a>
+  </div>
+)}
+
+<!-- Fixed header bar (appears on scroll on homepage, always visible on project pages) -->
+<header id="header" class={isHomePage ? "overlay-bottom" : "overlay-bottom sticky-header"} role="banner" data-is-homepage={isHomePage.toString()}>
+  <div class="header-inner clearfix">
+    <div class="header-content">
+      <div class="menu-wrapper left-float">
+        <a href="#" class="open-nav header-nav-trigger" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 18" fill="currentColor">
+            <rect y="0" width="24" height="2"/>
+            <rect y="8" width="24" height="2"/>
+            <rect y="16" width="24" height="2"/>
+          </svg>
+        </a>
+      </div>
+
+      <div id="logo" class="right-float">
+        <a id="fixed-logo" class="logotype" href={isHomePage ? "#home" : "/"} aria-label="Back to top">
+          <img src="/files/uploads/eyes-logo.png" alt="Sneaky Ghost Films" />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Full-screen navigation overlay -->
+<nav id="main-nav" class="text-light" role="navigation" aria-label="Main navigation">
+  <div class="nav-close">
+    <a href="#" class="close-nav" aria-label="Close navigation menu">&times;</a>
+  </div>
+  <div class="nav-logo">
+    <img src="/files/uploads/eyes-logo-light-transparent.png" alt="" />
+  </div>
+  <div class="nav-inner">
+    <ul>
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={isHomePage ? "scroll-to" : ""}
+            data-bigletter={link.letter}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="nav-social">
+    <ul class="socialmedia-widget">
+      {socialLinks.map((social) => (
+        <li class={social.platform}>
+          <a href={social.url} aria-label={social.platform} target="_blank" rel="noopener noreferrer"></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="nav-bg"></div>
+</nav>
+
+<style>
+  .fb-like-fixed {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+    display: inline-block;
+    background-color: #1e40af;
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  .fb-like-fixed:hover {
+    background-color: #1e3a8a;
+  }
+  @media (max-width: 640px) {
+    .fb-like-fixed {
+      display: none;
+    }
+  }
+
+  .fb-like-fixed.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Floating hamburger - visible before scroll */
+  .floating-nav-trigger {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    z-index: 101;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .floating-nav-trigger.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .floating-nav-trigger .open-nav {
+    display: block;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  .floating-nav-trigger .open-nav svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Fixed header - hidden until scroll */
+  #header {
+    position: fixed;
+    top: -80px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+    transition: top 0.4s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  #header.sticky-header {
+    top: 0;
+  }
+
+  .header-inner {
+    padding: 15px 30px;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-wrapper .open-nav {
+    display: block;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    color: #111;
+  }
+
+  .menu-wrapper .open-nav svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #logo {
+    height: 30px;
+  }
+
+  #logo img {
+    height: 100%;
+    width: auto;
+  }
+
+  /* Navigation overlay - override global styles for cleaner look */
+  :global(nav#main-nav) {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(13, 13, 13, 0.98) !important;
+    z-index: 100000 !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(nav#main-nav .nav-bg) {
+    display: none !important;
+  }
+
+  :global(nav#main-nav .nav-logo) {
+    position: relative !important;
+    top: auto !important;
+    margin-bottom: 30px;
+    opacity: 1 !important;
+  }
+
+  :global(nav#main-nav.nav-visible .nav-logo) {
+    opacity: 1 !important;
+  }
+
+  :global(nav#main-nav .nav-inner) {
+    position: relative !important;
+    max-height: none !important;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  :global(nav#main-nav .nav-inner ul) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  :global(nav#main-nav .nav-inner ul li) {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  :global(nav#main-nav .nav-social) {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 40px;
+    opacity: 1 !important;
+  }
+
+  :global(nav#main-nav.nav-visible .nav-social) {
+    opacity: 1 !important;
+  }
+
+  .nav-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    z-index: 100002;
+  }
+
+  .nav-close .close-nav {
+    font-size: 40px;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-close .close-nav:hover {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const floatingTrigger = document.getElementById('floating-nav-trigger');
+    const fbButton = document.getElementById('fb-like-fixed');
+    const header = document.getElementById('header');
+    const mainNav = document.getElementById('main-nav');
+    const openNavButtons = document.querySelectorAll('.open-nav');
+    const closeNavButton = document.querySelector('.close-nav');
+
+    // Toggle navigation overlay
+    function openNav() {
+      if (mainNav) {
+        const navInner = mainNav.querySelector('.nav-inner') as HTMLElement;
+
+        mainNav.style.display = 'flex';
+        // Small delay to allow display change before transition
+        setTimeout(() => {
+          mainNav.classList.add('nav-visible');
+          // Animate nav-inner opacity (like original jQuery code)
+          if (navInner) {
+            navInner.style.transition = 'opacity 0.5s ease';
+            navInner.style.opacity = '1';
+          }
+        }, 10);
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+      if (mainNav) {
+        const navInner = mainNav.querySelector('.nav-inner') as HTMLElement;
+
+        mainNav.classList.remove('nav-visible');
+        // Animate nav-inner opacity out
+        if (navInner) {
+          navInner.style.opacity = '0';
+        }
+        // Wait for transition before hiding
+        setTimeout(() => {
+          if (mainNav && !mainNav.classList.contains('nav-visible')) {
+            mainNav.style.display = 'none';
+          }
+        }, 600);
+      }
+      document.body.style.overflow = '';
+    }
+
+    openNavButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openNav();
+      });
+    });
+
+    closeNavButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeNav();
+    });
+
+    // Close nav when clicking a link
+    mainNav?.querySelectorAll('.nav-inner a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeNav();
+      });
+    });
+
+    // Close nav on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeNav();
+      }
+    });
+
+    // Scroll behavior - only on homepage
+    const isHomePage = header?.dataset.isHomepage === 'true';
+
+    if (isHomePage) {
+      function handleScroll() {
+        const scrollY = window.scrollY;
+        const heroHeight = window.innerHeight;
+
+        if (scrollY > heroHeight - 100) {
+          // Past hero - show sticky header, hide floating trigger and FB button
+          header?.classList.add('sticky-header');
+          floatingTrigger?.classList.add('hidden');
+          fbButton?.classList.add('hidden');
+        } else {
+          // In hero - hide sticky header, show floating trigger and FB button
+          header?.classList.remove('sticky-header');
+          floatingTrigger?.classList.remove('hidden');
+          fbButton?.classList.remove('hidden');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check initial state
+    }
+    // On project pages, sticky-header class is already applied via Astro
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a.scroll-to').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href?.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Eyes logo click - scroll to top
+    const fixedLogo = document.getElementById('fixed-logo');
+    if (fixedLogo && fixedLogo.getAttribute('href') === '#home') {
+      fixedLogo.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  });
+</script>

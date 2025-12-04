@@ -1,0 +1,37 @@
+---
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { platform: "facebook", url: "https://facebook.com/sneakyghost/" },
+  { platform: "twitter", url: "https://twitter.com/sdanzig/" },
+];
+---
+
+<footer role="contentinfo">
+  <div class="footer-inner wrapper">
+    <a href="#" id="backtotop" aria-label="Back to top">To Top</a>
+    <ul class="socialmedia-widget left-float">
+      {socialLinks.map((social) => (
+        <li class={social.platform}>
+          <a href={social.url} aria-label={social.platform} target="_blank" rel="noopener noreferrer"></a>
+        </li>
+      ))}
+    </ul>
+    <div class="copyright right-float">
+      Copyright &copy; {currentYear} by Sneaky Ghost Films.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Back to top button (vanilla JS)
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.getElementById('backtotop');
+    if (backToTop) {
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
