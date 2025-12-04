@@ -1,0 +1,44 @@
+/* CastGrid — 2:3 cards, per-row shrink; supports forcing exact column counts */
+:root{
+  --cast-gap: 16px;          /* spacing between cards */
+  --cast-min: 160px;         /* smallest card width allowed; can override inline */
+  --cast-max: 200px;         /* largest card width (200×300 look) */
+  --cast-color: inherit;     /* caption color; e.g., #fff on dark bg */
+}
+
+/* container for all rows */
+.cast{ display:grid; gap:var(--cast-gap); }
+
+/* each row is its own grid */
+.cast__row{
+  display:grid;
+  gap:var(--cast-gap);
+  /* default: auto-fit columns between min..max */
+  grid-template-columns: repeat(auto-fit, minmax(var(--cast-min), var(--cast-max)));
+  justify-content:center;
+  align-items:start;
+}
+
+/* ABOVE 900px: allow forcing exact column counts via --cols (set inline per row) */
+@media (min-width:900px){
+  .cast__row{
+    grid-template-columns: repeat(var(--cols, auto-fit), minmax(var(--cast-min), var(--cast-max)));
+  }
+  :root{ --cast-gap:20px; }
+}
+
+/* cards + images */
+.cast__row > *{ min-width:0; }     /* allow shrink inside grid tracks */
+.cast__card{ text-align:center; min-width:0; box-sizing:border-box; }
+.cast__thumb{
+  width:100%;
+  max-width:100%;
+  display:block;
+  object-fit:cover;
+  object-position:50% 40%;
+  /* keep 2:3 frame when supported; otherwise fallback is responsive image */
+  height:auto;
+  aspect-ratio:2 / 3;
+}
+.cast__name{ margin-top:8px; font-weight:700; line-height:1.2; color:var(--cast-color); }
+.cast__role{ font-size:0.95rem; opacity:0.85; color:var(--cast-color); }

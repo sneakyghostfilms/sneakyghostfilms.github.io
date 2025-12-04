@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".hero-slide");if(e.length===0)return;let t=0;const l=5e3;function n(s){e.forEach((i,c)=>{const o=c===s;i.classList.toggle("active",o),i.setAttribute("aria-hidden",(!o).toString())})}function r(){t=(t+1)%e.length,n(t)}n(0),setInterval(r,l)});
