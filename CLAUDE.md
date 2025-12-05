@@ -103,6 +103,8 @@ GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the Astro site a
 - 640px: Portfolio grid goes to 1 column, mobile styles
 - 400px: Hero title hidden on very small screens
 
-**Legacy CSS**: The site still uses `public/files/css/style.css` from the original design. Component-specific styles use `<style>` blocks in Astro components. Use `!important` when overriding legacy styles.
+**Legacy CSS (Technical Debt)**: The site still uses `public/files/css/style.css` from the original jQuery-based design. This creates specificity conflicts requiring `!important` overrides in Astro component styles.
+
+Future improvement: Gradually migrate legacy styles into Astro components and eliminate `style.css` dependencies. This would remove the need for `!important` hacks and make styles more maintainable.
 
 **GitHub Pages**: Deploys via `peaceiris/actions-gh-pages` to `gh-pages` branch. Source should be set to "Deploy from a branch" > `gh-pages`.
