@@ -19,7 +19,8 @@ const { mode } = Astro.props;
 
 <div class="page-body">
   <!-- Films Content -->
-  <div id="films-content" class="content-section">
+  <div id="films-content" class="content-section films-bokeh-wrap">
+    <canvas id="bokeh-canvas"></canvas>
     <!-- Productions Section -->
     <section id="productions">
       <div class="section-inner">
@@ -269,6 +270,108 @@ const { mode } = Astro.props;
       observer.observe(mapContainer);
     }
   });
+
+  // Bokeh canvas for Films background
+  (function initBokeh() {
+    const canvas = document.getElementById('bokeh-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d')!;
+
+    interface Orb {
+      x: number; y: number;
+      r: number;
+      vx: number; vy: number;
+      alpha: number;
+      color: number[];
+      pulseSpeed: number;
+      pulseOffset: number;
+    }
+
+    const orbs: Orb[] = [];
+    const WARM_COLORS = [
+      [255, 210, 120],  // warm gold
+      [255, 180, 80],   // amber
+      [255, 240, 200],  // soft warm white
+      [240, 160, 100],  // deep amber
+      [255, 220, 160],  // light gold
+      [220, 200, 255],  // cool accent (rare lens flare)
+    ];
+
+    function resize() {
+      const wrap = canvas.parentElement!;
+      canvas.width = wrap.offsetWidth;
+      canvas.height = wrap.offsetHeight;
+    }
+
+    function createOrbs() {
+      orbs.length = 0;
+      const w = canvas.width;
+      const h = canvas.height;
+      const count = Math.max(20, Math.floor((w * h) / 40000));
+
+      for (let i = 0; i < count; i++) {
+        const colorIdx = i < count * 0.85
+          ? Math.floor(Math.random() * 5) // mostly warm
+          : 5; // occasional cool accent
+        orbs.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: 15 + Math.random() * 80,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.15 - 0.05, // slight upward drift
+          alpha: 0.015 + Math.random() * 0.045,
+          color: WARM_COLORS[colorIdx],
+          pulseSpeed: 0.0005 + Math.random() * 0.001,
+          pulseOffset: Math.random() * Math.PI * 2,
+        });
+      }
+    }
+
+    function draw(time: number) {
+      if (!document.body.classList.contains('mode-films')) {
+        requestAnimationFrame(draw);
+        return;
+      }
+
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      orbs.forEach(o => {
+        o.x += o.vx;
+        o.y += o.vy;
+
+        // Wrap around
+        if (o.x < -o.r) o.x = w + o.r;
+        if (o.x > w + o.r) o.x = -o.r;
+        if (o.y < -o.r) o.y = h + o.r;
+        if (o.y > h + o.r) o.y = -o.r;
+
+        // Pulsing alpha
+        const pulse = Math.sin(time * o.pulseSpeed + o.pulseOffset) * 0.4 + 0.6;
+        const a = o.alpha * pulse;
+        const [cr, cg, cb] = o.color;
+
+        const grad = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+        grad.addColorStop(0, `rgba(${cr}, ${cg}, ${cb}, ${a * 1.8})`);
+        grad.addColorStop(0.4, `rgba(${cr}, ${cg}, ${cb}, ${a})`);
+        grad.addColorStop(1, 'transparent');
+
+        ctx.beginPath();
+        ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    createOrbs();
+    window.addEventListener('resize', () => { resize(); createOrbs(); });
+    requestAnimationFrame(draw);
+  })();
 </script>
 
 <style is:global>
@@ -417,6 +520,88 @@ const { mode } = Astro.props;
     width: 100% !important;
     height: 100% !important;
     max-width: none !important;
+  }
+
+  /* Bokeh canvas for Films background */
+  .films-bokeh-wrap {
+    position: relative;
+    background: #0a0a0a !important;
+  }
+
+  #bokeh-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .films-bokeh-wrap > section,
+  .films-bokeh-wrap > .spacer {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Contact section - dark theme for both modes */
+  #contact {
+    background: #0d0d0d !important;
+  }
+
+  #contact .section-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  #contact .main-title h3,
+  #contact .main-title h3 strong {
+    color: #fff !important;
+  }
+
+  #contact .alttitle {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  #contact .separator span {
+    background: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  #contact label {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact textarea {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+  }
+
+  #contact input[type="text"]::placeholder,
+  #contact input[type="email"]::placeholder,
+  #contact textarea::placeholder {
+    color: rgba(255, 255, 255, 0.35) !important;
+  }
+
+  #contact input[type="text"]:focus,
+  #contact input[type="email"]:focus,
+  #contact textarea:focus {
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    outline: none !important;
+  }
+
+  #contact .submit {
+    background: transparent !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #contact .submit:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
   }
 
   /* Contact form centering */

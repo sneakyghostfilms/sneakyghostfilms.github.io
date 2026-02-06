@@ -71,69 +71,6 @@ import { projects } from '../data/projects';
   .labs-section {
     padding: 80px 0;
     background: #0a0a0a;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Circuit grid background */
-  .labs-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      /* Grid node dots at intersections */
-      radial-gradient(circle 1.5px at center, rgba(0, 206, 209, 0.12) 0%, transparent 100%),
-      /* Vertical grid lines */
-      repeating-linear-gradient(90deg, rgba(0, 206, 209, 0.04) 0px, transparent 1px, transparent 80px),
-      /* Horizontal grid lines */
-      repeating-linear-gradient(0deg, rgba(0, 206, 209, 0.04) 0px, transparent 1px, transparent 80px);
-    background-size:
-      80px 80px,
-      80px 80px,
-      80px 80px;
-    animation: gridPulse 6s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Ambient floating glow spots */
-  .labs-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 600px 400px at 15% 20%, rgba(0, 206, 209, 0.04) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 350px at 85% 60%, rgba(0, 206, 209, 0.03) 0%, transparent 70%),
-      radial-gradient(ellipse 400px 300px at 50% 90%, rgba(0, 206, 209, 0.025) 0%, transparent 70%);
-    animation: glowDrift 12s ease-in-out infinite alternate;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Ensure content sits above the background */
-  .labs-section > .section-inner {
-    position: relative;
-    z-index: 1;
-  }
-
-  @keyframes gridPulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-  }
-
-  @keyframes glowDrift {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(30px, -20px) scale(1.05);
-    }
-    66% {
-      transform: translate(-20px, 15px) scale(0.97);
-    }
-    100% {
-      transform: translate(15px, -10px) scale(1.02);
-    }
   }
 
   .labs-subtitle {

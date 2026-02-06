@@ -60,18 +60,26 @@ const {
   </svg>
 
   <div class="hero-background">
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster={videoPoster}
-    >
-      <source src={`${videoFile}.webm`} type="video/webm" />
-      <source src={`${videoFile}.mp4`} type="video/mp4" />
-    </video>
-    <div class="hero-overlay"></div>
+    <!-- Films: video background -->
+    <div class="hero-bg-films">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster={videoPoster}
+      >
+        <source src={`${videoFile}.webm`} type="video/webm" />
+        <source src={`${videoFile}.mp4`} type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    <!-- Labs: animated circuit grid -->
+    <div class="hero-bg-labs">
+      <canvas id="circuit-canvas"></canvas>
+      <div class="hero-overlay hero-overlay-labs"></div>
+    </div>
   </div>
 
   <div class="hero-logo">
@@ -120,6 +128,34 @@ const {
     width: 100%;
     height: 100%;
     z-index: 0;
+  }
+
+  .hero-bg-films,
+  .hero-bg-labs {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  /* Mode-based hero background switching */
+  :global(body.mode-labs) .hero-bg-films {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  :global(body.mode-films) .hero-bg-labs {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #circuit-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hero-overlay-labs {
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .hero-logo {
@@ -518,4 +554,193 @@ const {
     filmsLink?.classList.toggle('active', mode === 'films');
     labsLink?.classList.toggle('active', mode === 'labs');
   }
+
+  // Circuit grid canvas animation
+  (function initCircuitCanvas() {
+    const canvas = document.getElementById('circuit-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d')!;
+
+    const GRID = 70;
+    const NODE_R = 1.5;
+    const TEAL = [0, 206, 209];
+
+    interface Trace {
+      x: number; y: number;
+      tx: number; ty: number;
+      progress: number;
+      speed: number;
+      alpha: number;
+    }
+
+    let traces: Trace[] = [];
+    let cols = 0, rows = 0;
+
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.parentElement!.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(rect.width / GRID);
+      rows = Math.ceil(rect.height / GRID);
+    }
+
+    function createTrace() {
+      const sx = Math.floor(Math.random() * cols) * GRID;
+      const sy = Math.floor(Math.random() * rows) * GRID;
+      const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+      const segments: number[][] = [];
+      let cx = sx, cy = sy;
+
+      // Build a multi-segment path (2-5 turns)
+      const turnCount = 2 + Math.floor(Math.random() * 4);
+      for (let i = 0; i < turnCount; i++) {
+        const d = dirs[Math.floor(Math.random() * dirs.length)];
+        const steps = 2 + Math.floor(Math.random() * 5);
+        const nx = cx + d[0] * steps * GRID;
+        const ny = cy + d[1] * steps * GRID;
+        segments.push([cx, cy, nx, ny]);
+        cx = nx; cy = ny;
+      }
+
+      const totalLen = segments.reduce((sum, s) =>
+        sum + Math.abs(s[2] - s[0]) + Math.abs(s[3] - s[1]), 0);
+
+      traces.push({
+        x: sx, y: sy,
+        tx: cx, ty: cy,
+        progress: 0,
+        speed: 0.8 + Math.random() * 1.5,
+        alpha: 0.25 + Math.random() * 0.35,
+        // @ts-ignore - attaching extra data
+        segments, totalLen
+      });
+    }
+
+    function draw(time: number) {
+      if (!document.body.classList.contains('mode-labs')) {
+        requestAnimationFrame(draw);
+        return;
+      }
+
+      const w = canvas.width / (window.devicePixelRatio || 1);
+      const h = canvas.height / (window.devicePixelRatio || 1);
+
+      // Background
+      ctx.fillStyle = '#080a0f';
+      ctx.fillRect(0, 0, w, h);
+
+      // Grid lines
+      ctx.strokeStyle = `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, 0.06)`;
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x <= w; x += GRID) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 0; y <= h; y += GRID) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // Nodes at intersections
+      for (let x = 0; x <= w; x += GRID) {
+        for (let y = 0; y <= h; y += GRID) {
+          const pulse = Math.sin(time * 0.0008 + x * 0.05 + y * 0.07) * 0.5 + 0.5;
+          const alpha = 0.08 + pulse * 0.18;
+
+          ctx.beginPath();
+          ctx.arc(x, y, NODE_R, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, ${alpha})`;
+          ctx.fill();
+
+          // Bright glow on some nodes
+          if (pulse > 0.75) {
+            const glowR = NODE_R * 6;
+            const grad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
+            grad.addColorStop(0, `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, ${pulse * 0.12})`);
+            grad.addColorStop(1, 'transparent');
+            ctx.beginPath();
+            ctx.arc(x, y, glowR, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
+            ctx.fill();
+          }
+        }
+      }
+
+      // Data traces
+      traces.forEach((t: any, i) => {
+        t.progress += t.speed;
+        const segs = t.segments as number[][];
+        let drawn = 0;
+
+        ctx.strokeStyle = `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, ${t.alpha})`;
+        ctx.lineWidth = 1.5;
+        ctx.shadowColor = `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, ${t.alpha * 0.6})`;
+        ctx.shadowBlur = 8;
+
+        for (const seg of segs) {
+          const segLen = Math.abs(seg[2] - seg[0]) + Math.abs(seg[3] - seg[1]);
+          const segStart = drawn;
+          const segEnd = drawn + segLen;
+
+          if (t.progress > segStart) {
+            const frac = Math.min(1, (t.progress - segStart) / segLen);
+            const ex = seg[0] + (seg[2] - seg[0]) * frac;
+            const ey = seg[1] + (seg[3] - seg[1]) * frac;
+            ctx.beginPath();
+            ctx.moveTo(seg[0], seg[1]);
+            ctx.lineTo(ex, ey);
+            ctx.stroke();
+
+            // Bright head dot
+            if (t.progress < segEnd) {
+              const headGrad = ctx.createRadialGradient(ex, ey, 0, ex, ey, 6);
+              headGrad.addColorStop(0, `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, 0.8)`);
+              headGrad.addColorStop(1, 'transparent');
+              ctx.beginPath();
+              ctx.arc(ex, ey, 6, 0, Math.PI * 2);
+              ctx.fillStyle = headGrad;
+              ctx.fill();
+            }
+          }
+
+          drawn += segLen;
+        }
+
+        ctx.shadowBlur = 0;
+
+        // Remove when done + faded
+        if (t.progress > t.totalLen + 30) {
+          traces.splice(i, 1);
+        }
+      });
+
+      // Spawn new traces
+      if (Math.random() < 0.025 && traces.length < 6) {
+        createTrace();
+      }
+
+      // Ambient glow zones
+      const gx1 = w * (0.2 + 0.1 * Math.sin(time * 0.0003));
+      const gy1 = h * (0.3 + 0.1 * Math.cos(time * 0.0004));
+      const grad1 = ctx.createRadialGradient(gx1, gy1, 0, gx1, gy1, 300);
+      grad1.addColorStop(0, `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, 0.03)`);
+      grad1.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad1;
+      ctx.fillRect(0, 0, w, h);
+
+      const gx2 = w * (0.75 + 0.08 * Math.sin(time * 0.0005));
+      const gy2 = h * (0.65 + 0.1 * Math.cos(time * 0.00035));
+      const grad2 = ctx.createRadialGradient(gx2, gy2, 0, gx2, gy2, 250);
+      grad2.addColorStop(0, `rgba(${TEAL[0]}, ${TEAL[1]}, ${TEAL[2]}, 0.025)`);
+      grad2.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad2;
+      ctx.fillRect(0, 0, w, h);
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    requestAnimationFrame(draw);
+  })();
 </script>
