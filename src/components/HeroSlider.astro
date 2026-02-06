@@ -4,13 +4,15 @@ interface Props {
   videoFile?: string;
   videoPoster?: string;
   logo?: string;
+  mode?: "films" | "labs";
 }
 
 const {
   slides = ["Captivating stories", "New realities", "Artistic vision"],
   videoFile = "/files/uploads/main_background_vid",
   videoPoster = "/files/uploads/1690x1100.jpg",
-  logo = "/files/uploads/catlogo.svg"
+  logo = "/files/uploads/catlogo.svg",
+  mode = "films"
 } = Astro.props;
 ---
 
@@ -73,19 +75,23 @@ const {
   </div>
 
   <div class="hero-logo">
-    <img src={logo} alt="Sneaky Ghost Films" />
+    <img src={logo} alt="Sneaky Ghost" />
   </div>
 
   <div class="hero-content">
     <h1 class="hero-title">
-      <span class="title-text" data-text="Sneaky Ghost Films">Sneaky Ghost Films</span>
+      <span class="title-text">Sneaky Ghost</span>
     </h1>
-    <div class="hero-slider" aria-live="polite">
-      {slides.map((slide, index) => (
-        <div class="hero-slide" data-index={index} aria-hidden={index !== 0}>
-          <strong>{slide}</strong>
-        </div>
-      ))}
+    <div class="hero-brands">
+      <a href="/" class={`brand-link brand-films ${mode === 'films' ? 'active' : ''}`} data-mode="films">
+        <span class="brand-name">Films</span>
+        <p class="brand-desc">Independent Cinema</p>
+      </a>
+      <span class="brand-separator">&bull;</span>
+      <a href="/labs" class={`brand-link brand-labs ${mode === 'labs' ? 'active' : ''}`} data-mode="labs">
+        <span class="brand-name">Labs</span>
+        <p class="brand-desc">Creative Technology</p>
+      </a>
     </div>
   </div>
 
@@ -193,16 +199,16 @@ const {
   }
 
   .hero-title {
-    margin-bottom: 30px;
+    margin-bottom: 1rem;
     position: relative;
   }
 
   .title-text {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(3rem, 8vw, 7rem);
     font-weight: 300;
     color: #fff;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     display: inline-block;
     filter: url(#ghostly-mist) url(#glow);
@@ -241,77 +247,165 @@ const {
     }
   }
 
-  @media (max-width: 768px) {
-    .title-text {
-      font-size: clamp(1.8rem, 6vw, 2.9rem);
-      letter-spacing: 0.1em;
-    }
-    .hero-title {
-      margin-bottom: 20px;
-    }
+  /* Hero brands container */
+  .hero-brands {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 0.5rem;
   }
 
-  @media (max-width: 400px) {
-    .hero-title {
-      display: none;
-    }
-  }
-
-  .hero-slider {
+  /* Individual brand links */
+  .brand-link {
+    text-decoration: none;
+    padding: 1rem 2rem;
     position: relative;
-    min-height: 120px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .brand-link:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Films brand */
+  .brand-films {
+    color: #e8d5c4;
+  }
+
+  .brand-films .brand-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(232, 213, 196, 0.4);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .brand-films:hover .brand-name,
+  .brand-films.active .brand-name {
+    text-shadow:
+      0 0 10px rgba(232, 213, 196, 0.8),
+      0 0 30px rgba(232, 213, 196, 0.5);
+  }
+
+  .brand-films .brand-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(232, 213, 196, 0.6);
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .brand-films:hover .brand-desc,
+  .brand-films.active .brand-desc {
+    color: rgba(232, 213, 196, 0.9);
+  }
+
+  /* Labs brand */
+  .brand-labs {
+    color: #00CED1;
+  }
+
+  .brand-labs .brand-name {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: clamp(1.3rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(0, 206, 209, 0.4);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .brand-labs:hover .brand-name,
+  .brand-labs.active .brand-name {
+    text-shadow:
+      0 0 10px rgba(0, 206, 209, 0.8),
+      0 0 30px rgba(0, 206, 209, 0.5),
+      0 0 50px rgba(0, 206, 209, 0.3);
+  }
+
+  .brand-labs .brand-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0, 206, 209, 0.6);
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .brand-labs:hover .brand-desc,
+  .brand-labs.active .brand-desc {
+    color: rgba(0, 206, 209, 0.9);
+  }
+
+  /* Separator dot */
+  .brand-separator {
     display: flex;
     align-items: center;
-    justify-content: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 2rem;
   }
 
-  .hero-slide {
+  /* Underline effects */
+  .brand-link::after {
+    content: '';
     position: absolute;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 300;
-    color: rgba(210, 220, 245, 0.9);
-    letter-spacing: 0.08em;
-    white-space: nowrap;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
   }
 
-  .hero-slide.active {
-    opacity: 1;
-    transform: translateY(0);
+  .brand-films::after {
+    background: linear-gradient(90deg, transparent, #e8d5c4, transparent);
+  }
+
+  .brand-labs::after {
+    background: linear-gradient(90deg, transparent, #00CED1, transparent);
+  }
+
+  .brand-link:hover::after,
+  .brand-link.active::after {
+    width: 80%;
   }
 
   @media (max-width: 768px) {
-    .hero-content {
-      width: 100%;
-      padding: 0;
+    .title-text {
+      font-size: clamp(2rem, 8vw, 4rem);
+      letter-spacing: 0.15em;
     }
-    .hero-slider {
-      width: 100%;
+    .hero-title {
+      margin-bottom: 0.5rem;
     }
-    .hero-slide {
-      position: relative;
-      white-space: normal;
-      width: 100%;
-      padding: 0 5%;
-      box-sizing: border-box;
-      font-size: clamp(1.2rem, 5vw, 1.8rem);
-      text-align: center;
-      line-height: 1.4;
+    .hero-brands {
+      flex-direction: column;
+      gap: 1.5rem;
     }
-    .hero-slide:not(.active) {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
+    .brand-separator {
+      display: none;
+    }
+    .brand-link {
+      padding: 0.75rem 1.5rem;
     }
   }
 
   @media (max-width: 400px) {
-    .hero-slide {
-      display: none;
+    .hero-title {
+      display: block;
+    }
+    .title-text {
+      font-size: clamp(1.5rem, 10vw, 2.5rem);
+      letter-spacing: 0.1em;
     }
   }
 
@@ -384,30 +478,44 @@ const {
 </style>
 
 <script>
+  // Mode toggle functionality
   document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.hero-slide');
-    if (slides.length === 0) return;
+    const brandLinks = document.querySelectorAll('.brand-link');
 
-    let currentIndex = 0;
-    const slideInterval = 5000;
-
-    function showSlide(index: number) {
-      slides.forEach((slide, i) => {
-        const isActive = i === index;
-        slide.classList.toggle('active', isActive);
-        slide.setAttribute('aria-hidden', (!isActive).toString());
+    brandLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const mode = (link as HTMLElement).dataset.mode as 'films' | 'labs';
+        setMode(mode);
       });
-    }
+    });
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-
-    // Show first slide
-    showSlide(0);
-
-    // Auto-advance slides
-    setInterval(nextSlide, slideInterval);
+    // Handle browser back/forward
+    window.addEventListener('popstate', () => {
+      const isLabs = window.location.pathname === '/labs' || window.location.pathname === '/labs/';
+      updateActiveStates(isLabs ? 'labs' : 'films');
+    });
   });
+
+  function setMode(mode: 'films' | 'labs') {
+    const isLabs = mode === 'labs';
+
+    // Update URL without reload
+    history.pushState({ mode }, '', isLabs ? '/labs' : '/');
+
+    // Toggle content visibility with CSS classes
+    document.body.classList.toggle('mode-labs', isLabs);
+    document.body.classList.toggle('mode-films', !isLabs);
+
+    // Update active states
+    updateActiveStates(mode);
+  }
+
+  function updateActiveStates(mode: 'films' | 'labs') {
+    const filmsLink = document.querySelector('.brand-films');
+    const labsLink = document.querySelector('.brand-labs');
+
+    filmsLink?.classList.toggle('active', mode === 'films');
+    labsLink?.classList.toggle('active', mode === 'labs');
+  }
 </script>

@@ -4,13 +4,15 @@ interface Props {
   description?: string;
   ogImage?: string;
   isProjectPage?: boolean;
+  mode?: "films" | "labs";
 }
 
 const {
   title,
   description = "Classic dark 'n' droll shorts and features from Pittsburgh-based filmmaker Scott Danzig.",
   ogImage = "/files/uploads/SneakyGhostLogo_with_background.gif",
-  isProjectPage = false
+  isProjectPage = false,
+  mode = "films"
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://sneakyghost.com');
@@ -51,6 +53,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://sneakygh
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="/files/css/style.css" />
@@ -92,9 +95,29 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://sneakygh
     }
   })} />
 
+  <!-- Mode-based content visibility (global) -->
+  <style is:global>
+    /* Hide labs content in films mode */
+    body.mode-films #labs-content {
+      display: none !important;
+    }
+    /* Hide films content in labs mode */
+    body.mode-labs #films-content {
+      display: none !important;
+    }
+    /* Content section transitions */
+    .content-section {
+      animation: contentFadeIn 0.3s ease;
+    }
+    @keyframes contentFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+
   <slot name="head" />
 </head>
-<body>
+<body class={`mode-${mode}`}>
 
   <!-- Scroll Arrow -->
   <div class="guidance">
