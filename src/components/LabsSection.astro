@@ -7,7 +7,7 @@ import { projects } from '../data/projects';
     <div class="wrapper">
       <div class="main-title align-center">
         <h2><strong>Projects</strong></h2>
-        <p class="labs-subtitle">Software and AI experiments from Sneaky Ghost.</p>
+        <p class="labs-subtitle">Selected software and AI experiments from Sneaky Ghost.</p>
       </div>
     </div>
     <div class="spacer spacer-medium"></div>
@@ -20,7 +20,7 @@ import { projects } from '../data/projects';
             <div class="project-image-wrapper">
               <div class="project-image">
                 {project.image ? (
-                  <img src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
+                  <img src={project.image} alt={`${project.title} screenshot`} loading="lazy" class="lightbox-trigger" />
                 ) : (
                   <div class="image-placeholder">
                     <span class="placeholder-text">{project.title}</span>
@@ -67,10 +67,42 @@ import { projects } from '../data/projects';
   </div>
 </section>
 
+<div class="labs-lightbox" id="labs-lightbox">
+  <img src="" alt="" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('labs-lightbox');
+  const lightboxImg = lightbox?.querySelector('img');
+
+  document.querySelectorAll('.labs-section .lightbox-trigger').forEach(img => {
+    img.addEventListener('click', () => {
+      if (lightbox && lightboxImg) {
+        lightboxImg.src = (img as HTMLImageElement).src;
+        lightboxImg.alt = (img as HTMLImageElement).alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  lightbox?.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox?.classList.contains('active')) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+
 <style>
   .labs-section {
     padding: 80px 0;
-    background: #0a0a0a;
+    background: #111;
   }
 
   .labs-subtitle {
@@ -140,16 +172,26 @@ import { projects } from '../data/projects';
 
   .project-image {
     position: relative;
-    aspect-ratio: 16 / 10;
     overflow: hidden;
+    background: #0d0d0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    max-height: 500px;
   }
 
   .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
     display: block;
     transition: transform 0.4s ease;
+  }
+
+  .project-image img.lightbox-trigger {
+    cursor: zoom-in;
   }
 
   .project-card:hover .project-image img {
@@ -276,6 +318,34 @@ import { projects } from '../data/projects';
     flex-shrink: 0;
   }
 
+  /* Lightbox overlay */
+  .labs-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .labs-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .labs-lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+  }
+
   @media (max-width: 900px) {
     .labs-section {
       padding: 60px 0;
@@ -301,7 +371,7 @@ import { projects } from '../data/projects';
     }
 
     .project-image {
-      aspect-ratio: 16 / 9;
+      max-height: 400px;
     }
 
     .image-placeholder {
