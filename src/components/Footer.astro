@@ -3,7 +3,7 @@ const currentYear = new Date().getFullYear();
 
 const socialLinks = [
   { platform: "facebook", url: "https://facebook.com/sneakyghost/" },
-  { platform: "twitter", url: "https://twitter.com/sdanzig/" },
+  { platform: "youtube", url: "https://www.youtube.com/@sneakyghostfilms" },
 ];
 ---
 
@@ -22,6 +22,34 @@ const socialLinks = [
     </div>
   </div>
 </footer>
+
+<style is:global>
+  footer[role="contentinfo"] {
+    background: #111 !important;
+  }
+
+  footer .copyright {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  #backtotop {
+    color: rgba(255, 255, 255, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  #backtotop:hover {
+    color: #fff !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  footer .socialmedia-widget li a {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  footer .socialmedia-widget li a:hover {
+    color: #fff !important;
+  }
+</style>
 
 <script>
   // Back to top button (vanilla JS)
