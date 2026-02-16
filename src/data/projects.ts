@@ -30,7 +30,7 @@ export const projects: Project[] = [
     slug: "witrank",
     title: "Witrank",
     description: "Tournament framework that evaluates AI models on jokes, code, recipes, and more",
-    longDescription: "A tournament system for comparing AI models head-to-head. Pick a challenge — write a joke, generate a recipe, solve a coding problem, tell a story — and Witrank runs it across multiple models simultaneously, scores the results, then coaches each model on what worked before the next round. This reinforcement learning loop means outputs improve across iterations as models learn from feedback. Uses OpenRouter to access models from OpenAI, Anthropic, Google, and others, with a Svelte dashboard that tracks ELO ratings.",
+    longDescription: "A tournament system for comparing AI models head-to-head. Pick a challenge — write a joke, generate a recipe, solve a coding problem, tell a story — and Witrank runs it across multiple models simultaneously, scores the results, then coaches each model on what worked before the next round. This reinforcement learning loop means outputs improve across iterations as models learn from feedback. Uses OpenRouter to access models from OpenAI, Anthropic, Google, and others, with a Svelte dashboard that tracks scores using a consistent rubric across rounds.",
     tech: ["Python", "Svelte", "OpenRouter"],
     image: "/files/uploads/labs/witrank-screenshot.png",
   },
