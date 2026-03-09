@@ -11,6 +11,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "ghostflow",
+    title: "GhostFlow",
+    description: "Flow-first Kanban board where neglected work fades into a 3D graveyard",
+    longDescription: "A Kanban board that takes stale work seriously. Tickets flow through five columns — Backlog, Startable, Doing, Review, Done — and any ticket that sits idle too long fades out of the board and lands in a 3D graveyard rendered with tombstones. From the graveyard you can resurrect tickets or let Ghostkeeper, an AI compaction agent, merge related dead tickets into summary tombstones. Riddles gate key transitions to keep work intentional, and AI checks powered by OpenRouter provide feedback at the startable and review stages.",
+    tech: ["Next.js", "FastAPI", "Three.js", "PostgreSQL"],
+    image: "/files/uploads/labs/ghostflow-screenshot.webp",
+  },
+  {
     slug: "streetcam",
     title: "Streetcam",
     description: "AI security camera that detects suspicious activity around vehicles using vision AI",
