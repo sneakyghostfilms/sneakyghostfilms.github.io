@@ -13,6 +13,7 @@ export interface Video {
 export interface Film {
   slug: string;
   title: string;
+  displayTitle?: string[];
   genre: string;
   categories: ('dark' | 'droll')[];
   image: string;
@@ -24,6 +25,23 @@ export interface Film {
 }
 
 export const films: Film[] = [
+  {
+    slug: "death_of_a_silvery_angel",
+    title: "Death of a Silvery Angel",
+    displayTitle: ["Death of a", "Silvery Angel"],
+    genre: "Dark Comedy",
+    categories: ["dark", "droll"],
+    image: "/files/uploads/films/death_of_a_silvery_angel_800x600.jpg",
+    heroImage: "/files/uploads/films/death_of_a_silvery_angel_1690x1100.jpg",
+    accolades: "Now in pre-production!",
+    description: "Neil loves the moon. Nora has other plans for it.",
+    cast: [
+      { name: "Dan Schrauder", role: "as Neil", img: "/files/uploads/cast/death_of_a_silvery_angel/dan-200x300.jpg" },
+      { name: "Andrea Disch", role: "as Nora", img: "/files/uploads/cast/death_of_a_silvery_angel/andrea-200x300.jpg" },
+      { name: "Grant Hester", role: "as the Ex", img: "/files/uploads/cast/death_of_a_silvery_angel/grant-200x300.jpg" },
+    ],
+    videos: [],
+  },
   {
     slug: "time_travelers_graveyard",
     title: "Time Travelers' Graveyard",
@@ -311,7 +329,7 @@ export const films: Film[] = [
     categories: ["dark"],
     image: "/files/uploads/films/dark_awakening_800x600.jpg",
     heroImage: "/files/uploads/films/dark_awakening_1690x1100.jpg",
-    accolades: "Now being submitted to film festivals!",
+    accolades: "",
     description: "Awakening in a zombie-infested basement, a concussed, bleeding woman must stay conscious in order to rescue her husband.",
     cast: [
       { name: "Kathleen Regan", role: "as Charlene", img: "/files/uploads/cast/dark_awakening/kathy-200x300.jpg" },

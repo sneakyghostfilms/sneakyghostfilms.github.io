@@ -2,10 +2,10 @@
 """
 make_sgf_assets.py — Generate WebP and 400w JPEG variants for Sneaky Ghost Films homepage.
 Run from the repo root. Requires: pip install pillow
-Creates for each portfolio image like files/uploads/films/foo_800x600.jpg:
-  - files/uploads/films/foo_800x600.webp
-  - files/uploads/films/foo_400w.webp
-  - files/uploads/films/foo_400w.jpg
+Creates for each portfolio image like public/files/uploads/films/foo_800x600.jpg:
+  - public/files/uploads/films/foo_800x600.webp
+  - public/files/uploads/films/foo_400w.webp
+  - public/files/uploads/films/foo_400w.jpg
 Safe to re-run; skips existing outputs by default.
 """
 import re, sys, os
@@ -17,7 +17,7 @@ except Exception as e:
     raise
 
 ROOT = Path(__file__).resolve().parent
-IMAGEDIR = ROOT / "files" / "uploads" / "films"
+IMAGEDIR = ROOT / "public" / "files" / "uploads" / "films"
 PAT = re.compile(r'_(\d{2,4})x(\d{2,4})\.(jpg|jpeg|png)$', re.I)
 
 QUALITY_WEBP = 80

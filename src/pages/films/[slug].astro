@@ -18,6 +18,7 @@ export function getStaticPaths() {
 }
 
 const { film, prevFilm, nextFilm } = Astro.props;
+const titleLines = film.displayTitle || [film.title];
 ---
 
 <Layout title={film.title} description={film.description} isProjectPage={true}>
@@ -66,11 +67,20 @@ const { film, prevFilm, nextFilm } = Astro.props;
 
       .film-hero h2 {
         font-family: 'Montserrat', sans-serif;
-        font-size: clamp(2rem, 5vw, 4rem);
+        font-size: clamp(1.65rem, 5vw, 4rem);
         font-weight: 700;
+        line-height: 1.12;
         margin-bottom: 1rem;
+        width: min(980px, calc(100vw - 64px));
+        max-width: 100%;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0;
+        overflow-wrap: break-word;
+        white-space: normal;
+      }
+
+      .film-hero h2 span {
+        display: block;
       }
 
       .film-hero h3 {
@@ -259,7 +269,11 @@ const { film, prevFilm, nextFilm } = Astro.props;
     style={`background-image: url(${film.heroImage});`}
   >
     <div class="film-hero-content">
-      <h2>{film.title}</h2>
+      <h2>
+        {titleLines.map((line) => (
+          <span>{line}</span>
+        ))}
+      </h2>
       <div class="separator-small"><span></span></div>
       <h3>{film.genre}</h3>
     </div>
@@ -281,7 +295,7 @@ const { film, prevFilm, nextFilm } = Astro.props;
       <div class="film-section">
         <div class="film-intro">
           <div class="film-accolades">
-            {film.accolades || "A Sneaky Ghost Films production."}
+            {film.accolades}
           </div>
           <div class="film-description">
             {film.description}
