@@ -33,7 +33,7 @@ export const films: Film[] = [
     categories: ["dark", "droll"],
     image: "/files/uploads/films/death_of_a_silvery_angel_800x600.jpg",
     heroImage: "/files/uploads/films/death_of_a_silvery_angel_1690x1100.jpg",
-    accolades: "Now in pre-production!",
+    accolades: "Now in post production!",
     description: "Neil loves the moon. Nora has other plans for it.",
     cast: [
       { name: "Dan Schrauder", role: "as Neil", img: "/files/uploads/cast/death_of_a_silvery_angel/dan-200x300.jpg" },
