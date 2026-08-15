@@ -36,8 +36,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build project
-        run: npm run build
+      - name: Build and test project
+        run: npm test
 
       - name: Prepare GitHub Pages files
         run: |
