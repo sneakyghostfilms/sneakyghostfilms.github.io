@@ -21,14 +21,6 @@ export const projects: Project[] = [
     link: "https://propsnagger.com",
   },
   {
-    slug: "ghostflow",
-    title: "GhostFlow",
-    description: "Flow-first Kanban board where neglected work fades into a 3D graveyard",
-    longDescription: "A Kanban board that takes stale work seriously. Tickets flow through five columns — Backlog, Startable, Doing, Review, Done — and any ticket that sits idle too long fades out of the board and lands in a 3D graveyard rendered with tombstones. From the graveyard you can resurrect tickets or let Ghostkeeper, an AI compaction agent, merge related dead tickets into summary tombstones. Riddles gate key transitions to keep work intentional, and AI checks powered by OpenRouter provide feedback at the startable and review stages.",
-    tech: ["Next.js", "FastAPI", "Three.js", "PostgreSQL"],
-    image: "/files/uploads/labs/ghostflow-screenshot.webp",
-  },
-  {
     slug: "streetcam",
     title: "Streetcam",
     description: "AI security camera that detects suspicious activity around vehicles using vision AI",
@@ -43,6 +35,14 @@ export const projects: Project[] = [
     longDescription: "A contact management tool for the film industry. Add people from credits, festival catalogs, or your own network and Scouter keeps everything in one place — profiles, representation details, social links — enriched with AI-assisted lookups. Includes analytics on your network and easy export, useful for producers, sales agents, or anyone who needs organized access to their industry contacts.",
     tech: ["Python", "FastAPI", "AI"],
     image: "/files/uploads/labs/scouter-screenshot.webp",
+  },
+  {
+    slug: "ghostflow",
+    title: "GhostFlow",
+    description: "Flow-first Kanban board where neglected work fades into a 3D graveyard",
+    longDescription: "A Kanban board that takes stale work seriously. Tickets flow through five columns — Backlog, Startable, Doing, Review, Done — and any ticket that sits idle too long fades out of the board and lands in a 3D graveyard rendered with tombstones. From the graveyard you can resurrect tickets or let Ghostkeeper, an AI compaction agent, merge related dead tickets into summary tombstones. Riddles gate key transitions to keep work intentional, and AI checks powered by OpenRouter provide feedback at the startable and review stages.",
+    tech: ["Next.js", "FastAPI", "Three.js", "PostgreSQL"],
+    image: "/files/uploads/labs/ghostflow-screenshot.webp",
   },
   {
     slug: "witrank",
