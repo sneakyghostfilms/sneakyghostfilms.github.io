@@ -11,6 +11,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "propsnagger",
+    title: "PropSnagger",
+    description: "Prop search for filmmakers - local rental catalogs searchable by keyword or by scene",
+    longDescription: "A prop finder for independent filmmakers. Local prop houses publish their inventory as PDF catalogs, photo galleries, and web stores that each have to be dug through one at a time — PropSnagger pulls them into a single searchable catalog, covering thousands of items from suppliers in and around Pittsburgh. Search by keyword, narrow by vendor, decade, or distance from your ZIP code, and every result links back to the supplier's own listing with the item number and how to inquire. Or skip the keywords entirely: paste a scene from your script and an AI model reads it, works out what props the scene calls for, and picks matches from the catalogs. Offered free to the film community as a service of the Cookies & Comedy Film Festival.",
+    tech: ["Astro", "Cloudflare Workers", "Workers AI"],
+    image: "/files/uploads/labs/propsnagger-screenshot.webp",
+    link: "https://propsnagger.com",
+  },
+  {
     slug: "ghostflow",
     title: "GhostFlow",
     description: "Flow-first Kanban board where neglected work fades into a 3D graveyard",
