@@ -2,6 +2,7 @@ export interface Project {
   slug: string;
   title: string;
   description: string;
+  /** Rendered as HTML, so it may contain links; escape a literal & as &amp;. */
   longDescription?: string;
   tech: string[];
   image?: string;
@@ -14,7 +15,7 @@ export const projects: Project[] = [
     slug: "propsnagger",
     title: "PropSnagger",
     description: "Prop search for filmmakers - local rental catalogs searchable by keyword or by scene",
-    longDescription: "A prop finder for independent filmmakers. Local prop houses publish their inventory as PDF catalogs, photo galleries, and web stores that each have to be searched separately — PropSnagger pulls them into one searchable catalog of thousands of items from suppliers in and around Pittsburgh. Search by keyword, narrow by vendor, decade, or distance, and every result links back to the supplier's own listing. Or paste a scene from your script and an AI model works out what props it calls for and picks matches from the catalogs. Offered free as a service of the Cookies & Comedy Film Festival.",
+    longDescription: "A prop finder for independent filmmakers. Local prop houses publish their inventory as PDF catalogs, photo galleries, and web stores that each have to be searched separately — PropSnagger pulls them into one searchable catalog of thousands of items from suppliers in and around Pittsburgh. Search by keyword, narrow by vendor, decade, or distance, and every result links back to the supplier's own listing. Or paste a scene from your script and an AI model works out what props it calls for and picks matches from the catalogs. Offered free as a service of the <a href=\"https://cookiesfilmfest.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Cookies &amp; Comedy Film Festival</a>.",
     tech: ["Astro", "Cloudflare Workers", "Workers AI"],
     image: "/files/uploads/labs/propsnagger-screenshot.webp",
     link: "https://propsnagger.com",

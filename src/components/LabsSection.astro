@@ -31,7 +31,7 @@ import { projects } from '../data/projects';
             </div>
             <div class="project-details">
               <h3 class="project-title">{project.title}</h3>
-              <p class="project-description">{project.longDescription || project.description}</p>
+              <p class="project-description" set:html={project.longDescription || project.description} />
               <div class="project-tech">
                 {project.tech.map((tech) => (
                   <span class="tech-tag">{tech}</span>
@@ -269,6 +269,18 @@ import { projects } from '../data/projects';
     line-height: 1.7;
     color: #ccc;
     margin: 0 0 20px 0;
+  }
+
+  .project-description :global(a) {
+    color: #00CED1;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 206, 209, 0.4);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .project-description :global(a:hover) {
+    text-decoration-color: #00CED1;
   }
 
   .project-tech {
